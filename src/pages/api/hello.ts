@@ -1,4 +1,4 @@
-import User from "../../../db/models/user";
+const User = require("../../../db/models/user");
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
