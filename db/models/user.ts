@@ -1,15 +1,15 @@
 'use strict';
-const { Model, DataTypes } = require('sequelize');
+import { Model, DataTypes } from 'sequelize';
 const connection = require('./index')
 
-const userInit = (sequelize, DataTypes) => {
+const userInit = (sequelize: any, DataTypes: { STRING: any; NUMBER: any; }) => {
   class User extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate(_models:object) {
       // define association here
     }
   }
@@ -23,7 +23,7 @@ const userInit = (sequelize, DataTypes) => {
       allowNull: false,
     },
     picture: {
-      type: DataTypes.STRING,
+      type: DataTypes.NUMBER,
       allowNull: false,
     },
     email: {

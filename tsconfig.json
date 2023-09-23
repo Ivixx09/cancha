@@ -13,10 +13,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "noUnusedParameters": true,
+    "resolvePackageJsonImports": true,
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "db/models/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "db/models/index.ts"],
   "exclude": ["node_modules"]
 }
