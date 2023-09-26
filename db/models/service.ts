@@ -1,4 +1,5 @@
 'use strict';
+import { type } from 'os';
 import { Model, DataTypes } from 'sequelize';
 const connection = require('./index')
 
@@ -29,6 +30,38 @@ const serviceInit = (sequelize: any, DataTypes: any) => {
     sena: {
         type:DataTypes.INTEGER,
         allowNull:true
+    },
+    duration:{
+        type:DataTypes.FLOAT,
+        allowNull:false
+    },
+    game_type:{
+        type:DataTypes.STRING,
+        allowNull: false
+    },
+    grass: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    ball:{
+        type:DataTypes.BOOLEAN,
+        allowNull:false
+    },
+    length:{
+        type: DataTypes.INTEGER,
+        allowNull:false
+    },
+    width:{
+        type: DataTypes.INTEGER,
+        allowNull:false
+    },
+    street:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    number: {
+        type: DataTypes.INTEGER,
+        allowNull:false
     }
   }, {
     sequelize,
