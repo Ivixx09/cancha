@@ -2,8 +2,8 @@
 import { Model, DataTypes } from 'sequelize';
 const connection = require('./index');
 
-const pageInit = (sequelize: any, DataTypes: any) => {
-  class Page extends Model {
+const diaryInit = (sequelize: any, DataTypes: any) => {
+  class Diary extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,25 +13,29 @@ const pageInit = (sequelize: any, DataTypes: any) => {
       // define association here
     }
   }
-  Page.init({
-    name:{
+  Diary.init({
+    day:{
       type: DataTypes.STRING,
       allowNull: false
     },
-    description:{
+    hour:{
       type: DataTypes.STRING,
       allowNull: false
     },
-    image:{
-      type: DataTypes.STRING,
+    service_id:{
+      type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
+    user_email:{
+        type: DataTypes.STRING,
+        allowNull: false
+      }
   }, {
     sequelize,  
-    modelName: 'Page',
+    modelName: 'Diary',
     freezeTableName: true
   });
-  return Page;
+  return Diary;
 };
 
-module.exports = pageInit(connection, DataTypes)
+module.exports = diaryInit(connection, DataTypes)
