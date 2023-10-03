@@ -14,15 +14,12 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       description: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       price: {
         type: Sequelize.FLOAT,
-        allowNull: false,
       },
       sena: {
         type: Sequelize.INTEGER,
@@ -30,35 +27,35 @@ module.exports = {
       },
       duration: {
         type: Sequelize.FLOAT,
-        allowNull: false,
       },
       game_type: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       grass: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       ball: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
       },
       length: {
         type: Sequelize.INTEGER,
-        allowNull: false,
       },
       width: {
         type: Sequelize.INTEGER,
-        allowNull: false,
       },
       street: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       number: {
         type: Sequelize.INTEGER,
+      },
+      createdAt: {
         allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     })
   },

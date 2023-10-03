@@ -1,6 +1,6 @@
-'use strict';
-import { type } from 'os';
-import { Model, DataTypes } from 'sequelize';
+'use strict'
+import { type } from 'os'
+import { Model, DataTypes } from 'sequelize'
 const connection = require('./index')
 
 const serviceInit = (sequelize: any, DataTypes: any) => {
@@ -10,65 +10,57 @@ const serviceInit = (sequelize: any, DataTypes: any) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(_models:object) {
+    static associate(_models: object) {
       // define association here
     }
   }
-  Service.init({
-    title:{
+  Service.init(
+    {
+      title: {
         type: DataTypes.STRING,
-        allowNull:false
-    },
-    description:{
+      },
+      description: {
         type: DataTypes.STRING,
-        allowNull:false
-    },
-    price:{
+      },
+      price: {
         type: DataTypes.FLOAT,
-        allowNull:false
-    },
-    sena: {
-        type:DataTypes.INTEGER,
-        allowNull:true
-    },
-    duration:{
-        type:DataTypes.FLOAT,
-        allowNull:false
-    },
-    game_type:{
-        type:DataTypes.STRING,
-        allowNull: false
-    },
-    grass: {
+      },
+      sena: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      duration: {
+        type: DataTypes.FLOAT,
+      },
+      game_type: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    ball:{
-        type:DataTypes.BOOLEAN,
-        allowNull:false
-    },
-    length:{
-        type: DataTypes.INTEGER,
-        allowNull:false
-    },
-    width:{
-        type: DataTypes.INTEGER,
-        allowNull:false
-    },
-    street:{
+      },
+      grass: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    number: {
+      },
+      ball: {
+        type: DataTypes.BOOLEAN,
+      },
+      length: {
         type: DataTypes.INTEGER,
-        allowNull:false
-    }
-  }, {
-    sequelize,
-    modelName: 'Service',
-    freezeTableName: true
-  });
-  return Service;
-};
+      },
+      width: {
+        type: DataTypes.INTEGER,
+      },
+      street: {
+        type: DataTypes.STRING,
+      },
+      number: {
+        type: DataTypes.INTEGER,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'Service',
+      freezeTableName: true,
+    },
+  )
+  return Service
+}
 
 module.exports = serviceInit(connection, DataTypes)
