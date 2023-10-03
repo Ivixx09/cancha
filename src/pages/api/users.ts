@@ -48,8 +48,12 @@ export default async function handler(
           ? res.status(200).json({ 'Created Successfull': created })
           : res.status(400).json('Error creating the user')
       }
-    } catch (error: any) {
-      return res.status(500).json(error.message)
+    } catch (err) {
+      if (err instanceof Error) {
+        console.log(err.message)
+      } else {
+        console.log('Unexpected error', err)
+      }
     }
   } else if (req.method === 'PUT') {
     try {
