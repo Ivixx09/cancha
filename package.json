@@ -12,6 +12,13 @@
     "test react": "react-scripts test",
     "eject react": "react-scripts eject"
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  
   "dependencies": {
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -22,6 +29,9 @@
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "postcss": "8.4.29",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1",
