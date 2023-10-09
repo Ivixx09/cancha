@@ -15,6 +15,11 @@ export default function Home() {
 
     
     <main className="p-5">
+      <div>
+    <h3 className="text-5xl mb-5">Welcome to Cancha!</h3>
+        <p className="mb-5">Discover and book sports facilities around you</p>
+        </div>
+
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {/* You can replace the number and content with your data */}
         {Array(9).fill().map((_, i) => (
