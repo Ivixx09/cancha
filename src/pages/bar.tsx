@@ -64,3 +64,4 @@ function Bar(){
       </section>
     )
 }
+export default Bar
