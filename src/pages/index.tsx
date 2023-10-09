@@ -20,6 +20,29 @@ export default function Home() {
         <p className="mb-5">Discover and book sports facilities around you</p>
         </div>
 
+
+
+
+        <div className="mt-10 py-6 bg-green-500 text-white">
+  <div className="flex flex-wrap md:flex-nowrap justify-around items-center md:justify-between">
+    <div className="p-4 md:w-2/3">
+      <h2 className="text-4xl mb-2">Improve Your Court's Usability with Our Software!</h2>
+      <p>
+        Right from managing bookings to getting insights about your court usage, 
+        our software makes the task easier than ever before. Try it for free now!
+      </p>
+    </div>
+    <div className="p-4 md:w-1/3 flex justify-around md:flex-col md:items-end">
+      <button className="m-2 bg-white text-blue-500 py-2 px-4 rounded">
+        Download Now
+      </button>
+      <button className="m-2 bg-white text-blue-500 py-2 px-4 rounded">
+        Learn More
+      </button>
+    </div>
+  </div>
+</div>
+
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {/* You can replace the number and content with your data */}
         {Array(9).fill().map((_, i) => (
