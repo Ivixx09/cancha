@@ -3,7 +3,10 @@ import { Inter } from 'next/font/google'
 import { Fragment } from 'react'
 import Head from 'next/head'
 import Header from './header'
-import
+import Footer from './footer'
+import FAQ from './faq'
+import Bar from './bar'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
