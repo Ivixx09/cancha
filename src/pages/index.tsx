@@ -43,17 +43,7 @@ export default function Home() {
   </div>
 </div>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {/* You can replace the number and content with your data */}
-        {Array(9).fill().map((_, i) => (
-          <div key={i} className="border rounded-lg p-5">
-            <img className="w-full h-64 object-cover mb-5 rounded" src="https://via.placeholder.com/500" alt="Court" />
-            <h2 className="text-2xl mb-2">Court {i + 1}</h2>
-            <p className="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <button className="py-1 px-3 bg-blue-500 text-white rounded">Book</button>
-          </div>
-        ))}
-      </section>
+      
     </main>
 
     
