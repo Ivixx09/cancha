@@ -17,13 +17,13 @@ export default function Home() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    
+    <Header></Header>
     <main className="p-5">
       <div>
     <h3 className="text-5xl mb-5">Welcome to Cancha!</h3>
         <p className="mb-5">Discover and book sports facilities around you</p>
         </div>
-
+        <Bar></Bar>
 
 
 
@@ -46,11 +46,11 @@ export default function Home() {
     </div>
   </div>
 </div>
-
+<FAQ></FAQ>
       
     </main>
 
-    
+    <Footer></Footer>
   </Fragment>
   )
 }
