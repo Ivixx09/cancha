@@ -6,6 +6,8 @@ import Header from './header'
 import Footer from './footer'
 import FAQ from './faq'
 import Bar from './bar'
+import Banner1 from './banner1'
+import Banner2 from './banner2'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,7 +26,7 @@ export default function Home() {
         <p className="mb-5">Discover and book sports facilities around you</p>
         </div>
         <Bar></Bar>
-
+        <Banner1></Banner1>
 
 
         <div className="mt-10 py-6 bg-green-500 text-white">
@@ -46,6 +48,8 @@ export default function Home() {
     </div>
   </div>
 </div>
+<Banner2></Banner2>
+
 <FAQ></FAQ>
       
     </main>

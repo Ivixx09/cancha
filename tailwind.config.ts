@@ -17,4 +17,24 @@ const config: Config = {
   },
   plugins: [],
 }
+module.exports = {
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  darkMode: "media", // or 'media' or 'class'
+  theme: {
+    extend: {
+      transitionProperty: {
+        'height': 'height',
+        'width': 'width',
+      },
+      rotate: {
+        '360': '360deg',
+      },
+    },
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+}
+
 export default config
