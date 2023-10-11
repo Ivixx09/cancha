@@ -3,8 +3,8 @@ import React from 'react';
 function Banner2() {
   const sponsors = [
     { id: 1, logo: '/images/logo1.svg.webp', name: 'Sponsor 1' },
-    { id: 2, logo: '/images/logo1.jpg', name: 'Sponsor 2' },
-    { id: 3, logo: '/images/logo1.png', name: 'Sponsor 3' },
+    { id: 2, logo: '/images/logo2.jpg', name: 'Sponsor 2' },
+    { id: 3, logo: '/images/logo3.png', name: 'Sponsor 3' },
     // add as many sponsors as you want
   ];
 
