@@ -7,25 +7,25 @@ function Banner2() {
     { id: 3, logo: '/images/logo3.png', name: 'Sponsor 3' }, // add more sponsors as you like
   ];
 
-  const [displayedSponsors, setDisplayedSponsors] = useState(sponsors);
+  const [displayedSponsors, setDisplayedSponsors] = useState(sponsors.slice(0, 2));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDisplayedSponsors((currentSponsors) => {
-        const nextSponsorIndex = (sponsors.indexOf(currentSponsors[1]) + 1) % sponsors.length;
-        const nextSponsor = sponsors[nextSponsorIndex];
-        return [currentSponsors[1], nextSponsor];
-      });
+      setDisplayedSponsors((oldArray) => [
+        { ...oldArray[1] },  // the second sponsor becomes the first
+        // select the next sponsor in the line or the first one if we are at the array's end
+        { ...sponsors[(sponsors.indexOf(oldArray[1]) + 1) % sponsors.length] },
+      ]);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [sponsors]);
 
   return (
     <div className="bg-blue-500 text-white text-center py-5 overflow-hidden">
       <h2 className="text-4xl mb-4">Our Sponsors:</h2>
       <div className="flex justify-between items-center p-10 overflow-hidden">
         {displayedSponsors.map((sponsor, index) => (
-          <div className="flex-grow transition-all duration-500 ease-in-out" key={index}>
+          <div className="flex-grow transition-all duration-500 ease-in-out" key={sponsor.id}>
             <img
               className="mx-auto"
               src={sponsor.logo}
