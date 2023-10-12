@@ -1,5 +1,5 @@
-import React from 'react';
-//import logo1 from '../../public/images/logo1.svg.webp'
+import React, { useEffect, useState } from 'react';
+
 function Banner2() {
   const sponsors = [
     { id: 1, logo: '/images/logo1.svg.webp', name: 'Sponsor 1' },
@@ -8,13 +8,25 @@ function Banner2() {
     // add as many sponsors as you want
   ];
 
+  const [displayedSponsors, setDisplayedSponsors] = useState(sponsors.slice(0, 2));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDisplayedSponsors((oldArray) => [
+        ...oldArray.slice(1, 2),
+        sponsors[(sponsors.indexOf(oldArray[1]) + 1) % sponsors.length],
+      ]);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="bg-blue-500 text-white text-center py-5">
-      <h2 className="text-4xl my-2">Our Sponsors:</h2>
-      <div className="flex justify-center flex-wrap items-center">
-        {sponsors.map((sponsor) => (
-          <div key={sponsor.id} className="m-4">
-            <img className="h-16 w-auto" src={sponsor.logo} alt={sponsor.name} />
+    <div className="bg-blue-500 text-white text-center py-5 overflow-hidden">
+      <h2 className="text-4xl mb-4">Our Sponsors:</h2>
+      <div className="flex space-x-4 items-center justify-center">
+        {displayedSponsors.map((sponsor) => (
+          <div key={sponsor.id} className="w-1/2 flex justify-center">
+            <img style={{ maxWidth: '100px', height: 'auto' }} src={sponsor.logo} alt={sponsor.name} />
           </div>
         ))}
       </div>
