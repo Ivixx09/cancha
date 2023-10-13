@@ -8,7 +8,7 @@ import FAQ from './faq'
 import Bar from './bar'
 import Banner1 from './banner1'
 import Banner2 from './banner2'
-
+import Banner3 from './banner3'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,13 +21,17 @@ export default function Home() {
 
     <Header></Header>
     <main className="p-5">
+     <div>
       <div>
     <h3 className="text-5xl mb-5">Welcome to Cancha!</h3>
         <p className="mb-5">Discover and book sports facilities around you</p>
         </div>
         <Bar></Bar>
+        </div>
         <Banner1></Banner1>
 
+
+        <Banner2></Banner2>
 
         <div className="mt-10 py-6 bg-green-500 text-white">
   <div className="flex flex-wrap md:flex-nowrap justify-around items-center md:justify-between">
@@ -48,8 +52,8 @@ export default function Home() {
     </div>
   </div>
 </div>
-<Banner2></Banner2>
 
+<Banner3></Banner3>
 <FAQ></FAQ>
       
     </main>
