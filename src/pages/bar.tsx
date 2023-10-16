@@ -2,11 +2,11 @@ import React from "react";
 
 function Bar() {
     return (
-        <section>
-            <div className="mb-10 ml-auto mr-auto max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-                <div className="md:flex">
-                    <div className="md:flex-grow p-8">
-                        <div className="flex flex-wrap -mx-3">
+        <section className="flex justify-center items-center">
+            <div className="mb-10 ml-5 mr-5 bg-white rounded-xl shadow-md overflow-hidden md:inline-flex w-auto">
+        <div className="md:flex">
+          <div className="md:flex-grow p-8">
+            <div className="flex flex-row flex-wrap -mx-3">
                             <div className="px-3">
                                 <div className="relative">
                                     <select className="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
@@ -48,8 +48,10 @@ function Bar() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="px-3 py-4">
-                                <button className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">Search</button>
+                            <div className="flex items-center px-3 py-0">
+                                <button className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " type="button">
+                                    Search
+                                </button>
                             </div>
                         </div>
                     </div>
