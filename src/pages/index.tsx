@@ -21,15 +21,19 @@ export default function Home() {
 
     <Header></Header>
     <main className="p-5">
-     <div>
-      <div>
+     <div className="p-[5%] sm:p-[15%]" >
+      
     <h3 className="text-5xl mb-5">Welcome to Cancha!</h3>
         <p className="mb-5">Discover and book sports facilities around you</p>
         </div>
+        <div className="pt-20">
+        
         <Bar></Bar>
         </div>
+        
+        <div>
         <Banner1></Banner1>
-
+        </div>
 
         <Banner2></Banner2>
 
