@@ -21,10 +21,10 @@ export default function Home() {
 
     <Header></Header>
     <main className="p-5">
-     <div className="p-[5%] sm:p-[15%]" >
+     <div className="p-[5%] sm:p-[10%]" >
       
-    <h3 className="text-5xl mb-5">Welcome to Cancha!</h3>
-        <p className="mb-5">Discover and book sports facilities around you</p>
+    <h3 className="text-6xl mb-10 ">Ready to play?</h3>
+        <p className="text-xl">Discover and book sports facilities around you in real time</p>
         </div>
         <div className="pt-20">
         
