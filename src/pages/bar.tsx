@@ -12,8 +12,8 @@ function Bar() {
           <div className="md:flex-grow p-8">
             <div className="flex flex-row flex-wrap -mx-3">
                             <div className="px-3">
-                                <div className="relative">
-                                    <select className="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <select className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                         <option>New Mexico</option>
                                         <option>Missouri</option>
                                         <option>Texas</option>
@@ -24,11 +24,11 @@ function Bar() {
                                 </div>
                             </div>
                             <div className="px-3">
-                                <div className="relative">
+                                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <select
   value={sport || ''} // If sport is an empty string, the initial label 'Select Sport' will be shown
   onChange={handleSportChange}
-  className="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+  className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
   id="grid-sport"
 >
   <option value='' hidden>Select Sport</option> {/* Initial label */}
@@ -42,13 +42,13 @@ function Bar() {
                                 </div>
                             </div>
                             <div className="px-3">
-                                <div className="relative">
-                                    <input type="date" className="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-date"/>
+                                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                    <input type="date" className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-date"/>
                                 </div>
                             </div>
                             <div className="px-3">
-                                <div className="relative">
-                                    <select className="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-time">
+                                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <select className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                         <option>9:00 AM</option>
                                         <option>12:00 PM</option>
                                         <option>3:00 PM</option>
@@ -59,7 +59,7 @@ function Bar() {
                                 </div>
                             </div>
                             <div className="flex items-center px-3 py-0">
-                                <button className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " type="button">
+                            <button className="bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" type="button">
                                 Search courts
                                 </button>
                             </div>
