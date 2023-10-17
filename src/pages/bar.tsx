@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-function Bar() {
-  const [sport, setSport] = useState('');
+import React from "react";
 
-  const handleSportChange = (event) => {
-    setSport(event.target.value);
-  };
+function Bar() {
     return (
         <section className="flex justify-center items-center">
             <div className="mb-10 ml-5 mr-5 bg-white rounded-xl shadow-md overflow-hidden md:inline-flex w-auto">
@@ -24,11 +20,11 @@ function Bar() {
                                 </div>
                             </div>
                             <div className="px-3">
-                                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <div className="relative">
                                 <select
   value={sport || ''} // If sport is an empty string, the initial label 'Select Sport' will be shown
   onChange={handleSportChange}
-  className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+  className="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
   id="grid-sport"
 >
   <option value='' hidden>Select Sport</option> {/* Initial label */}
@@ -59,7 +55,7 @@ function Bar() {
                                 </div>
                             </div>
                             <div className="flex items-center px-3 py-0">
-                            <button className="bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" type="button">
+                                <button className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " type="button">
                                 Search courts
                                 </button>
                             </div>
