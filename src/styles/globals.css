@@ -56,3 +56,27 @@ body {
   transition: transform 2s ease-out, opacity 1s ease-in-out;
   transition-delay: 1s;
 }
+
+/* Hide original arrow widget */
+.date-input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* Custom arrow */
+.date-input:after {
+  content: url(path_to_your_custom_arrow_icon.svg);
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+}
+
+/* Hide original input field when inactive */
+.date-input:not(:focus):not(:placeholder-shown) {
+  text-indent: -9999em;
+}
+
+/* Show original input field when active or has content */
+.date-input:focus,
+.date-input:placeholder-shown {
+  text-indent: 0;
+}
