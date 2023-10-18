@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef,useState } from "react";
 import DateInput from "./datepicker";
 function Bar() {
     const [sport, setSport] = useState('');
@@ -6,6 +6,12 @@ function Bar() {
   const handleSportChange = (event) => {
     setSport(event.target.value);
   };
+  const inputRef1 =useRef(null);
+  const inputRef2 = useRef(null);
+  const inputRef3 = useRef(null);
+  const focusInput = (ref) => {
+    ref.current && ref.current.focus();
+}
     return (
         <section className="flex justify-center items-center">
             <div className="mb-10 ml-5 mr-5 bg-white rounded-xl shadow-md overflow-hidden md:inline-flex w-auto">
@@ -15,9 +21,9 @@ function Bar() {
                             <div className="px-3">
                                 <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
-                                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5 4h10l-5 7-5-7z" /></svg>
-                                    </div>
-                                <select className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+            <img src="logo1.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef1)} />
+        </div>
+                                <select ref={inputRef1} className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                         <option>New Mexico</option>
                                         <option>Missouri</option>
                                         <option>Texas</option>
@@ -28,9 +34,10 @@ function Bar() {
                             <div className="px-3">
                                 <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
-                                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5 4h10l-5 7-5-7z" /></svg>
-                                    </div>
+            <img src="logo2.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef2)} />
+        </div>
                                 <select
+                                ref={inputRef2}
   value={sport || ''} // If sport is an empty string, the initial label 'Select Sport' will be shown
   onChange={handleSportChange}
   className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -53,9 +60,9 @@ function Bar() {
                             <div className="px-3">
                                 <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
-                                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5 4h10l-5 7-5-7z" /></svg>
-                                    </div>
-                                <select className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+            <img src="logo3.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef3)} />
+        </div>
+                                <select ref={inputRef3} className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                         <option>9:00 AM</option>
                                         <option>12:00 PM</option>
                                         <option>3:00 PM</option>
