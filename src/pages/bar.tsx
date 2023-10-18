@@ -53,9 +53,7 @@ function Bar() {
                             </div>
                             <div className="px-3">
                                 <DateInput/>
-    {/*<div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-        <input type="date" className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-new-date"/>
-    </div>*/}
+    
 </div>
                             <div className="px-3">
                                 <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
