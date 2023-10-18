@@ -24,6 +24,7 @@ function Bar() {
             <img src="logo1.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef1)} />
         </div>
                                 <select ref={inputRef1} className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                <option value="" disabled selected hidden>Search city</option>
                                         <option>New Mexico</option>
                                         <option>Missouri</option>
                                         <option>Texas</option>
@@ -61,9 +62,43 @@ function Bar() {
             <img src="logo3.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef3)} />
         </div>
                                 <select ref={inputRef3} className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                                        <option>9:00 AM</option>
-                                        <option>12:00 PM</option>
-                                        <option>3:00 PM</option>
+                                        <option>8:00 </option>
+                                        <option>8:30 </option>
+                                        <option>9:00 </option>
+                                        <option>9:30 </option>
+                                        <option>10:00 </option>
+                                        <option>10:30 </option>
+                                        <option>11:00 </option>
+                                        <option>11:30 </option>
+                                        <option>12:00 </option>
+                                        <option>12:30 </option>
+                                        <option>13:00 </option>
+                                        <option>13:30 </option>
+                                        <option>14:00 </option>
+                                        <option>14:30 </option>
+                                        <option>15:00 </option>
+                                        <option>15:30 </option>
+                                        <option>16:00 </option>
+                                        <option>16:30 </option>
+                                        <option>17:00 </option>
+                                        <option>17:30 </option>
+                                        <option>18:00 </option>
+                                        <option>18:30 </option>
+                                        <option>19:00 </option>
+                                        <option>19:30 </option>
+                                        <option>20:00 </option>
+                                        <option>20:30 </option>
+                                        <option>21:00 </option>
+                                        <option>21:30 </option>
+                                        <option>22:00 </option>
+                                        <option>22:30 </option>
+                                        <option>23:00 </option>
+                                        <option>23:30 </option>
+                                        <option>0:00 </option>
+                                        <option>0:30 </option>
+                                        <option>1:00 </option>
+                                        <option>1:30 </option>
+                                        <option>2:00 </option>
                                     </select>
                                    
                                 </div>
