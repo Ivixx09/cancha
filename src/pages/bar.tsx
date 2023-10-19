@@ -1,15 +1,17 @@
 import React, { useRef,useState } from "react";
 import DateInput from "./datepicker";
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+
 function Bar() {
     const [sport, setSport] = useState('');
-
-  const handleSportChange = (event) => {
+const [value,setValue]=useState(null);
+  const handleSportChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setSport(event.target.value);
   };
-  const inputRef1 =useRef(null);
+  
   const inputRef2 = useRef(null);
   const inputRef3 = useRef(null);
-  const focusInput = (ref) => {
+  const focusInput = (ref: React.MutableRefObject<null>) => {
     ref.current && ref.current.focus();
 }
     return (
@@ -19,27 +21,30 @@ function Bar() {
           <div className="md:flex-grow p-8">
             <div className="flex flex-row flex-wrap -mx-3">
                             <div className="px-3">
-                                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
-            <img src="logo1.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef1)} />
-        </div>
-                                <select ref={inputRef1} className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                                <option value="" disabled selected hidden>Search city</option>
-                                        <option>New Mexico</option>
-                                        <option>Missouri</option>
-                                        <option>Texas</option>
-                                    </select>
-                                    
+                            <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                    <div className="flex items-center">
+                                        <img src="logo1.png" alt="logo" className="mr-2" /> {/* Logo Image */}
+                                        <div className="flex-grow"> {/* Autocomplete Input Field */}
+                                        <GooglePlacesAutocomplete
+        apiKey="YOUR_API_KEY"
+        selectProps={{
+          placeholder: 'Search City',
+          
+        
+             
+          
+        }}
+      />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </div>                             
                             <div className="px-3">
                                 <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
             <img src="logo2.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef2)} />
         </div>
-                                <select
-                                ref={inputRef2}
-  value={sport || ''} // If sport is an empty string, the initial label 'Select Sport' will be shown
+                                <select  ref={inputRef2} value={sport || ''} // If sport is an empty string, the initial label 'Select Sport' will be shown
   onChange={handleSportChange}
   className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
   id="grid-sport"

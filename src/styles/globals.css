@@ -56,4 +56,9 @@ body {
   transition: transform 2s ease-out, opacity 1s ease-in-out;
   transition-delay: 1s;
 }
-
+.css-1g0ktt0-Jt{
+  display: none !important;
+ }
+.css-13cymwt-control {
+  border:none !important;
+}
