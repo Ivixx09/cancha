@@ -3,27 +3,48 @@ import DateInput from "./datepicker";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 function Bar() {
-    const [sport, setSport] = useState('');
-const [value,setValue]=useState(null);
-  const handleSportChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-    setSport(event.target.value);
+  const [sport, setSport] = useState('');
+  const [isSportDropdownOpen, setIsSportDropdownOpen] = useState(false);
+
+  const handleSportChange = (selectedSport) => {
+    setSport(selectedSport);
+    setIsSportDropdownOpen(false);
   };
-  
+
+  const toggleSportDropdown = () => {
+    setIsSportDropdownOpen(!isSportDropdownOpen);
+  };
+
   const inputRef2 = useRef(null);
   const inputRef3 = useRef(null);
-  const focusInput = (ref: React.MutableRefObject<null>) => {
+
+  const focusInput = (ref) => {
     ref.current && ref.current.focus();
-}
+  };
+
+  // Define an array of sport options with logos
+  const sportOptions = [
+    { value: 'Soccer', logo: 'soccer.png' },
+    { value: 'Tennis', logo: 'tennis.png' },
+    { value: 'Soccer', logo: 'soccer.png' },
+    { value: 'Tennis', logo: 'tennis.png' },
+    { value: 'Soccer', logo: 'soccer.png' },
+    { value: 'Tennis', logo: 'tennis.png' },
+    { value: 'Soccer', logo: 'soccer.png' },
+    { value: 'Tennis', logo: 'tennis.png' },
+    // Add more sport options with logos
+  ];
+
     return (
         <section className="flex justify-center items-center">
-            <div className="mb-10 ml-5 mr-5 bg-white rounded-xl shadow-md overflow-hidden md:inline-flex w-auto">
+            <div className="mb-10 ml-5 mr-5 bg-white rounded-xl shadow-md  md:inline-flex w-auto">
         <div className="md:flex">
           <div className="md:flex-grow p-8">
             <div className="flex flex-row flex-wrap -mx-3">
                             <div className="px-3">
-                            <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <div className="mt-1.5 relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                     <div className="flex items-center">
-                                        <img src="logo1.png" alt="logo" className="mr-2" /> {/* Logo Image */}
+                                    <img src="logo1.png" alt="logo" className=" " /> {/* Logo Image */}
                                         <div className="flex-grow"> {/* Autocomplete Input Field */}
                                         <GooglePlacesAutocomplete
         apiKey="YOUR_API_KEY"
@@ -40,33 +61,48 @@ const [value,setValue]=useState(null);
                                 </div>
                             </div>                             
                             <div className="px-3">
-                                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
-            <img src="logo2.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef2)} />
-        </div>
-                                <select  ref={inputRef2} value={sport || ''} // If sport is an empty string, the initial label 'Select Sport' will be shown
-  onChange={handleSportChange}
-  className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-  id="grid-sport"
->
-  <option value='' hidden>Select Sport</option> {/* Initial label */}
-  <option value='Soccer'>Soccer</option>
-  <option value='Tennis'>Tennis</option>
-  <option value='Baseball'>Baseball</option>
-</select>
-                                    
-                                </div>
-                            </div>
-                            <div className="px-3">
+                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                  <div className="relative">
+                    <div
+                      onClick={toggleSportDropdown}
+                      className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer"
+                    >
+                      <div className="flex items-center">
+                        <img src="logo2.png" alt="logo" className="w-6 h-4 mr-2" />
+                        {sport === '' ? 'Select Sport' : sport}
+                      </div>
+                    </div>
+                    {isSportDropdownOpen && (
+                      <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
+                        {sportOptions.map((option) => (
+                          <div
+                            key={option.value}
+                            onClick={() => handleSportChange(option.value)}
+                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer flex items-center"
+                          >
+                            <img src={option.logo} alt={option.value} className="w-6 h-6 mr-2" />
+                            {option.value}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="px-3">
                                 <DateInput/>
     
 </div>
                             <div className="px-3">
-                                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
-            <img src="logo3.png" alt="logo" className="absolute left-2" onClick={() => focusInput(inputRef3)} />
-        </div>
-                                <select ref={inputRef3} className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <div className="px-3 relative  appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+  <div className="relative inline-block">
+    <img src="logo3.png" alt="logo" className=" " onClick={() => focusInput(inputRef3)} />
+  </div>
+  <select
+    ref={inputRef3}
+    className="inline-block appearance-none bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+    id="grid-state"
+  >
                                         <option>8:00 </option>
                                         <option>8:30 </option>
                                         <option>9:00 </option>
@@ -108,7 +144,7 @@ const [value,setValue]=useState(null);
                                    
                                 </div>
                             </div>
-                            <div className="flex items-center px-3 py-0">
+                            <div className="flex items-center ">
                             <button className="bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" type="button">
                                 Search Courts
                                 </button>
