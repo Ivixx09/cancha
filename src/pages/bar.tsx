@@ -34,6 +34,29 @@ function Bar() {
     { value: 'Tennis', logo: 'tennis.png' },
     // Add more sport options with logos
   ];
+  const [selectedHour, setSelectedHour] = useState("Select Hour");
+  const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
+
+  const hours = [
+    "8:00 AM",
+    "8:30 AM",
+    "9:00 AM",
+    "9:30 AM",
+    "10:00 AM",
+    "10:30 AM",
+    "11:00 AM",
+    "11:30 AM",
+    "12:00 PM"
+  ];
+
+  const handleHourChange = (hour) => {
+    setSelectedHour(hour);
+    setIsTimeDropdownOpen(false);
+  };
+
+  const toggleTimeDropdown = () => {
+    setIsTimeDropdownOpen(!isTimeDropdownOpen);
+  };
 
     return (
         <section className="flex justify-center items-center">
@@ -93,57 +116,40 @@ function Bar() {
                                 <DateInput/>
     
 </div>
-                            <div className="px-3">
-                            <div className="px-3 relative  appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-  <div className="relative inline-block">
-    <img src="logo3.png" alt="logo" className=" " onClick={() => focusInput(inputRef3)} />
-  </div>
-  <select
-    ref={inputRef3}
-    className="inline-block appearance-none bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-    id="grid-state"
-  >
-                                        <option>8:00 </option>
-                                        <option>8:30 </option>
-                                        <option>9:00 </option>
-                                        <option>9:30 </option>
-                                        <option>10:00 </option>
-                                        <option>10:30 </option>
-                                        <option>11:00 </option>
-                                        <option>11:30 </option>
-                                        <option>12:00 </option>
-                                        <option>12:30 </option>
-                                        <option>13:00 </option>
-                                        <option>13:30 </option>
-                                        <option>14:00 </option>
-                                        <option>14:30 </option>
-                                        <option>15:00 </option>
-                                        <option>15:30 </option>
-                                        <option>16:00 </option>
-                                        <option>16:30 </option>
-                                        <option>17:00 </option>
-                                        <option>17:30 </option>
-                                        <option>18:00 </option>
-                                        <option>18:30 </option>
-                                        <option>19:00 </option>
-                                        <option>19:30 </option>
-                                        <option>20:00 </option>
-                                        <option>20:30 </option>
-                                        <option>21:00 </option>
-                                        <option>21:30 </option>
-                                        <option>22:00 </option>
-                                        <option>22:30 </option>
-                                        <option>23:00 </option>
-                                        <option>23:30 </option>
-                                        <option>0:00 </option>
-                                        <option>0:30 </option>
-                                        <option>1:00 </option>
-                                        <option>1:30 </option>
-                                        <option>2:00 </option>
-                                    </select>
-                                   
-                                </div>
-                            </div>
+ <div className="relative inline-block bg-white text-gray-700 focus:outline-none focus:bg-white  border-b-2 border-gray-200">
+ 
+      <div
+        onClick={toggleTimeDropdown}
+        className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center "
+      >
+        <div className="flex items-center">
+      <img
+        src="your_image.png" // Replace with the image URL
+        alt="Logo"
+        className="w-6 h-4 mr-2 cursor-pointer"
+        onClick={toggleTimeDropdown}
+      />
+      </div>
+        {selectedHour}
+        
+      </div>
+      
+      {isTimeDropdownOpen && (
+        <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto ">
+          
+          {hours.map((hour) => (
+            <div
+              key={hour}
+              onClick={() => handleHourChange(hour)}
+              className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+            >
+              
+              {hour}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
                             <div className="flex items-center ">
                             <button className="bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" type="button">
                                 Search Courts
