@@ -1,20 +1,49 @@
-import React, { useRef,useState } from "react";
+import React, { useRef,useState,useEffect } from "react";
 import DateInput from "./datepicker";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 function Bar() {
-  const [sport, setSport] = useState('');
+  const [selectedSport, setSelectedSport] = useState("Select Sport");
   const [isSportDropdownOpen, setIsSportDropdownOpen] = useState(false);
 
   const handleSportChange = (selectedSport) => {
-    setSport(selectedSport);
+    setSelectedSport(selectedSport);
     setIsSportDropdownOpen(false);
   };
 
   const toggleSportDropdown = () => {
     setIsSportDropdownOpen(!isSportDropdownOpen);
   };
+  const dropdownRef = useRef(null);
+  const handleDocumentClick = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setIsSportDropdownOpen(false);
+    }
+  };
 
+  useEffect(() => {
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
+
+  const timeDropdownRef = useRef(null);
+
+  const handleDocumentClickTime = (e) => {
+    if (timeDropdownRef.current && !timeDropdownRef.current.contains(e.target)) {
+      setIsTimeDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleDocumentClickTime);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClickTime);
+    };
+  }, []);
 
   const focusInput = (ref) => {
     ref.current && ref.current.focus();
@@ -22,15 +51,9 @@ function Bar() {
 
   // Define an array of sport options with logos
   const sportOptions = [
-    { value: 'Futbol 5', logo: '/images/ball.png' },
-    { value: 'Futbol 6', logo: '/images/ball.png' },
-    { value: 'Futbol 7', logo: '/images/ball.png' },
-    { value: 'Futbol 8', logo: '/images/ball.png' },
-    { value: 'Futbol 9', logo: '/images/ball.png' },
-    { value: 'Futbol 10', logo: '/images/ball.png' },
-    { value: 'Futbol 11', logo: '/images/ball.png' },
+    { value: 'Futbol', logo: '/images/futbol.png' },
     { value: 'Basquet', logo: '/images/basketball.png' },
-    { value: 'Voley', logo: '/images/volley.png' },
+    { value: 'Voley', logo: '/images/voley.png' },
     { value: 'Rugby', logo: '/images/rugby.png' },
     { value: 'Tennis', logo: '/images/tennis.png' },
     { value: 'Natacion', logo: '/images/natacion.png' },
@@ -90,6 +113,7 @@ function Bar() {
   const toggleTimeDropdown = () => {
     setIsTimeDropdownOpen(!isTimeDropdownOpen);
   };
+  
 
     return (
         <section className="flex justify-center items-center">
@@ -116,27 +140,46 @@ function Bar() {
                                     </div>
                                 </div>
                             </div>                             
-                            <div className="px-3">
-                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <div className="px-3" ref={dropdownRef}>
+                <div
+                  className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                >
                   <div className="relative">
                     <div
                       onClick={toggleSportDropdown}
                       className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer"
                     >
                       <div className="flex items-center">
-                        <img src="\images\sports.png" alt="logo" className="w-6 h-6 mr-2" />
-                        {sport === '' ? 'Select Sport' : sport}
+                        {selectedSport === "Select Sport" ? (
+                          <img
+                            src="/images/sports.png"
+                            alt="logo"
+                            className="w-6 h-6 mr-2"
+                          />
+                        ) : (
+                          <img
+                            src={`/images/${selectedSport.toLowerCase()}.png`}
+                            alt="logo"
+                            className="w-6 h-6 mr-2"
+                          />
+                        )}
+                        {selectedSport}
                       </div>
                     </div>
                     {isSportDropdownOpen && (
                       <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
+                        {/* Render sport options with logos */}
                         {sportOptions.map((option) => (
                           <div
                             key={option.value}
                             onClick={() => handleSportChange(option.value)}
-                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer flex items-center"
+                            className="px-4 py-2 hover-bg-gray-200 cursor-pointer flex items-center"
                           >
-                            <img src={option.logo} alt={option.value} className="w-6 h-6 mr-2" />
+                            <img
+                              src={`/images/${option.value.toLowerCase()}.png`}
+                              alt={option.value}
+                              className="w-6 h-6 mr-2"
+                            />
                             {option.value}
                           </div>
                         ))}
@@ -149,35 +192,30 @@ function Bar() {
                                 <DateInput/>
     
 </div>
- <div className="relative inline-block bg-white text-gray-700 focus:outline-none focus:bg-white  border-b-2 border-gray-200">
- 
-      <div
-        onClick={toggleTimeDropdown}
-        className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center "
-      >
-        <div className="flex items-center">
-      <img
-        src="/images/timeclock.png" // Replace with the image URL
-        alt="Logo"
-        className="w-6 h-6 mr-2 cursor-pointer"
-        onClick={toggleTimeDropdown}
-      />
-      </div>
-        {selectedHour}
-        
-      </div>
-      
-      {isTimeDropdownOpen && (
-        <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto ">
-          
-          {hours.map((hour) => (
-            <div
-              key={hour}
-              onClick={() => handleHourChange(hour)}
-              className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-            >
-              
-              {hour}
+<div className="relative inline-block bg-white text-gray-700 focus:outline-none focus:bg-white  border-b-2 border-gray-200" ref={timeDropdownRef}>
+                <div
+                  onClick={toggleTimeDropdown}
+                  className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
+                >
+                  <div className="flex items-center">
+                    <img
+                      src="/images/timeclock.png" // Replace with the image URL
+                      alt="Logo"
+                      className="w-6 h-6 mr-2 cursor-pointer"
+                      onClick={toggleTimeDropdown}
+                    />
+                  </div>
+                  {selectedHour}
+                </div>
+                {isTimeDropdownOpen && (
+                  <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
+                    {hours.map((hour) => (
+                      <div
+                        key={hour}
+                        onClick={() => handleHourChange(hour)}
+                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                      >
+                        {hour}
             </div>
           ))}
         </div>
