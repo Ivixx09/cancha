@@ -5,7 +5,7 @@ function Header(){
         <div className="flex items-center">
           <img 
             className="mr-2 h-8 w-8"
-            src="/path_to_your_logo.png" 
+            src="/images/arch football.png" 
             alt="Your logo"
           />
           <h1 className="text-2xl">Cancha</h1>
