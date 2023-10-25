@@ -15,8 +15,6 @@ function Bar() {
     setIsSportDropdownOpen(!isSportDropdownOpen);
   };
 
-  const inputRef2 = useRef(null);
-  const inputRef3 = useRef(null);
 
   const focusInput = (ref) => {
     ref.current && ref.current.focus();
@@ -24,14 +22,21 @@ function Bar() {
 
   // Define an array of sport options with logos
   const sportOptions = [
-    { value: 'Soccer', logo: 'soccer.png' },
-    { value: 'Tennis', logo: 'tennis.png' },
-    { value: 'Soccer', logo: 'soccer.png' },
-    { value: 'Tennis', logo: 'tennis.png' },
-    { value: 'Soccer', logo: 'soccer.png' },
-    { value: 'Tennis', logo: 'tennis.png' },
-    { value: 'Soccer', logo: 'soccer.png' },
-    { value: 'Tennis', logo: 'tennis.png' },
+    { value: 'Futbol 5', logo: '/images/ball.png' },
+    { value: 'Futbol 6', logo: '/images/ball.png' },
+    { value: 'Futbol 7', logo: '/images/ball.png' },
+    { value: 'Futbol 8', logo: '/images/ball.png' },
+    { value: 'Futbol 9', logo: '/images/ball.png' },
+    { value: 'Futbol 10', logo: '/images/ball.png' },
+    { value: 'Futbol 11', logo: '/images/ball.png' },
+    { value: 'Basquet', logo: '/images/basketball.png' },
+    { value: 'Voley', logo: '/images/volley.png' },
+    { value: 'Rugby', logo: '/images/rugby.png' },
+    { value: 'Tennis', logo: '/images/tennis.png' },
+    { value: 'Natacion', logo: '/images/natacion.png' },
+    { value: 'Maraton', logo: '/images/maraton.png' },
+    
+
     // Add more sport options with logos
   ];
   const [selectedHour, setSelectedHour] = useState("Select Hour");
@@ -95,7 +100,7 @@ function Bar() {
                             <div className="px-3">
                             <div className="mt-1.5 relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                     <div className="flex items-center">
-                                    <img src="logo1.png" alt="logo" className=" " /> {/* Logo Image */}
+                                    <img src="\images\location.png" alt="logo" className="w-6 h-6" /> {/* Logo Image */}
                                         <div className="flex-grow"> {/* Autocomplete Input Field */}
                                         <GooglePlacesAutocomplete
         apiKey="YOUR_API_KEY"
@@ -119,7 +124,7 @@ function Bar() {
                       className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer"
                     >
                       <div className="flex items-center">
-                        <img src="logo2.png" alt="logo" className="w-6 h-4 mr-2" />
+                        <img src="\images\sports.png" alt="logo" className="w-6 h-6 mr-2" />
                         {sport === '' ? 'Select Sport' : sport}
                       </div>
                     </div>
@@ -152,9 +157,9 @@ function Bar() {
       >
         <div className="flex items-center">
       <img
-        src="your_image.png" // Replace with the image URL
+        src="/images/timeclock.png" // Replace with the image URL
         alt="Logo"
-        className="w-6 h-4 mr-2 cursor-pointer"
+        className="w-6 h-6 mr-2 cursor-pointer"
         onClick={toggleTimeDropdown}
       />
       </div>
