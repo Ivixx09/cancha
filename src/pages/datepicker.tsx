@@ -16,7 +16,7 @@ export default function DateInput() {
   }
 
   return (
-    <div className="flex items-center bg-white text-gray-700 focus:outline-none focus:bg-white w-full border-b-2 border-gray-200 ">
+    <div className="flex items-center  text-gray-700    border-b-2 ">
       {/* Add a click handler to the logo */}
       <img 
         src="\images\calendarsdsad.png" 
@@ -24,7 +24,7 @@ export default function DateInput() {
         className="h-5 w-5 cursor-pointer "
         onClick={handleLogoClick}
       />
-      <div className="ml-2 w-full ">
+      <div className="ml-2  ">
         <DatePicker 
           ref={datePickerRef}
           selected={startDate} 

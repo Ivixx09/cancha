@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 
 const AccordionItem = ({ FAQ, isOpen, onClick }) => {
   return (
-    <div>
-      <div onClick={onClick}>
+    <div className="border p-3 bg-white w-full flex flex-col text-black first:rounded-t-lg last:rounded-b-lg">
+     <div onClick={onClick} className="cursor-pointer flex justify-between items-center w-full">
         <h2>{FAQ.question}</h2>
-        <span>{isOpen ? '▲' : '▼'}</span>
+        <span className="self-end">{isOpen ? '▲' : '▼'}</span>
       </div>
-      {isOpen && <p>{FAQ.answer}</p>}
+      {isOpen && <div className="mt-2">{FAQ.answer}</div>}
     </div>
   );
 };
-
 const FAQ = () => {
   const faqs = [
     {
@@ -48,7 +47,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <div>
+    <div className="max-w-5xl mx-auto">
       {faqs.map((FAQ, i) => 
         <AccordionItem 
           key={i} 

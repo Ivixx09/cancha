@@ -51,13 +51,13 @@ function Bar() {
 
   // Define an array of sport options with logos
   const sportOptions = [
-    { value: 'Futbol', logo: '/images/futbol.png' },
+    { value: 'Football', logo: '/images/football.png' },
     { value: 'Basquet', logo: '/images/basketball.png' },
     { value: 'Voley', logo: '/images/voley.png' },
     { value: 'Rugby', logo: '/images/rugby.png' },
     { value: 'Tennis', logo: '/images/tennis.png' },
-    { value: 'Natacion', logo: '/images/natacion.png' },
-    { value: 'Maraton', logo: '/images/maraton.png' },
+    { value: 'Swimming', logo: '/images/swimming.png' },
+    { value: 'Marathon', logo: '/images/marathon.png' },
     
 
     // Add more sport options with logos
@@ -116,34 +116,28 @@ function Bar() {
   
 
     return (
-        <section className="flex justify-center items-center">
-            <div className="mb-10 ml-5 mr-5 bg-white rounded-xl shadow-md  md:inline-flex w-auto">
+      <section className="flex justify-center items-center">
+      <div className="mb-8 ml-5 mr-5 bg-white rounded-xl w-full sm:w-auto">
         <div className="md:flex">
-          <div className="md:flex-grow p-8">
-            <div className="flex flex-row flex-wrap -mx-3">
-                            <div className="px-3">
-                            <div className="mt-1.5 relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                    <div className="flex items-center">
-                                    <img src="\images\location.png" alt="logo" className="w-6 h-6" /> {/* Logo Image */}
-                                        <div className="flex-grow"> {/* Autocomplete Input Field */}
-                                        <GooglePlacesAutocomplete
-        apiKey="YOUR_API_KEY"
-        selectProps={{
-          placeholder: 'Search City',
-          
-        
-             
-          
-        }}
-      />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                             
-                            <div className="px-3" ref={dropdownRef}>
-                <div
-                  className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                >
+          <div className="md:flex-grow p-3">
+            <div className="flex flex-col md:flex-row flex-wrap -mx-3">
+              <div className="px-3 ">
+                <div className="mt-2 relative block w-full  border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                  <div className="flex items-center">
+                    <img src="/images/location.png" alt="logo" className="w-6 h-6" />
+                    <div className="flex-grow">
+                      <GooglePlacesAutocomplete
+                        apiKey="YOUR_API_KEY"
+                        selectProps={{
+                          placeholder: 'Search City',
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="px-3 " ref={dropdownRef}>
+                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                   <div className="relative">
                     <div
                       onClick={toggleSportDropdown}
@@ -151,11 +145,7 @@ function Bar() {
                     >
                       <div className="flex items-center">
                         {selectedSport === "Select Sport" ? (
-                          <img
-                            src="/images/sports.png"
-                            alt="logo"
-                            className="w-6 h-6 mr-2"
-                          />
+                          <img src="/images/sports.png" alt="logo" className="w-6 h-6 mr-2" />
                         ) : (
                           <img
                             src={`/images/${selectedSport.toLowerCase()}.png`}
@@ -168,7 +158,6 @@ function Bar() {
                     </div>
                     {isSportDropdownOpen && (
                       <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
-                        {/* Render sport options with logos */}
                         {sportOptions.map((option) => (
                           <div
                             key={option.value}
@@ -188,50 +177,53 @@ function Bar() {
                   </div>
                 </div>
               </div>
-              <div className="px-3">
-                                <DateInput/>
-    
-</div>
-<div className="relative inline-block bg-white text-gray-700 focus:outline-none focus:bg-white  border-b-2 border-gray-200" ref={timeDropdownRef}>
-                <div
-                  onClick={toggleTimeDropdown}
-                  className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
-                >
-                  <div className="flex items-center">
-                    <img
-                      src="/images/timeclock.png" // Replace with the image URL
-                      alt="Logo"
-                      className="w-6 h-6 mr-2 cursor-pointer"
-                      onClick={toggleTimeDropdown}
-                    />
-                  </div>
-                  {selectedHour}
-                </div>
-                {isTimeDropdownOpen && (
-                  <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
-                    {hours.map((hour) => (
-                      <div
-                        key={hour}
-                        onClick={() => handleHourChange(hour)}
-                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                      >
-                        {hour}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-                            <div className="flex items-center ">
-                            <button className="bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" type="button">
-                                Search Courts
-                                </button>
-                            </div>
-                        </div>
+              <div className="px-3 ">
+                <DateInput />
+              </div>
+              <div className="px-3 " ref={timeDropdownRef}>
+                <div className="relative inline-block bg-white text-gray-700 focus:outline-none focus:bg-white border-b-2 border-gray-200">
+                  <div
+                    onClick={toggleTimeDropdown}
+                    className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
+                  >
+                    <div className="flex items-center">
+                      <img
+                        src="/images/timeclock.png"
+                        alt="Logo"
+                        className="w-6 h-6 mr-2 cursor-pointer"
+                        onClick={toggleTimeDropdown}
+                      />
                     </div>
+                    {selectedHour}
+                  </div>
+                  {isTimeDropdownOpen && (
+                    <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
+                      {hours.map((hour) => (
+                        <div
+                          key={hour}
+                          onClick={() => handleHourChange(hour)}
+                          className="px-4 py-2 hover-bg-gray-200 cursor-pointer"
+                        >
+                        {hour}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
+              </div>
+              <div className="px-3 ">
+                <div className="flex items-center">
+                  <button className="w-full  mt-0.5 bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-3 px-4 rounded-full" type="button">
+                    Search Courts
+                  </button>
+                </div>
+              </div>
             </div>
-        </section>
-    )
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Bar
