@@ -9,6 +9,7 @@ import Bar from './bar'
 import Banner1 from './banner1'
 import Banner2 from './banner2'
 import Banner3 from './banner3'
+import Locations from './Components/locations'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -61,7 +62,7 @@ export default function Home() {
 <FAQ></FAQ>
       
     </main>
-
+<Locations/>
     <Footer></Footer>
   </Fragment>
   )
