@@ -1,25 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 function Footer (){
-    const countries = [
-        { name: 'Country 1', flag: 'flag1.png' },
-        { name: 'Country 2', flag: 'flag2.png' },
-        // Add more countries with flag URLs
-      ];
-      const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const countries = [
+    { name: 'United States', flag: '/images/united-states.png' },
+    { name: 'Mexico', flag: '/images/mexico.png' },
+    { name: 'Argentina', flag: '/images/argentina.png' },
+    // Add more countries with flag URLs
+  ];
 
-      const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-      };
+  const [selectedCountry, setSelectedCountry] = useState('United States');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleCountrySelect = (countryName) => {
+    setSelectedCountry(countryName);
+    setIsDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    // Add an event listener to close the dropdown when clicking outside
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    window.addEventListener('click', handleClickOutside);
+
+    return () => {
+      // Clean up the event listener
+      window.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
     return (
         <div>
-        <div className="flex justify-center space-x-32 my-4 mb-24">
+        <div className="flex justify-center space-x-32 my-4 mb-24 bg-green-950">
           {/* Column 1 */}
           <div className="text-center">
-            <img src="logo1.png" alt="Logo 1" className="w-16 h-16" />
+            <img src="" alt="Logo 1" className="w-16 h-16" />
             <p>Online support</p>
             <div className="flex items-center justify-center">
-    <img src="logo2.png" alt="Logo 2" className="w-8 h-8" />
-    <img src="logo3.png" alt="Logo 3" className="w-8 h-8" />
+    <img src="/images/whatsapp.png" alt="Logo 2" className="w-6 h-6 mr-2" />
+    <img src="\images\mail.png" alt="Logo 3" className="w-6 h-6 mr-2" />
   </div>
           </div>
     
@@ -29,9 +55,9 @@ function Footer (){
             <p>Privacy policies</p>
             <h3 className="text-lg font-semibold">Social networks</h3>
             <div className="flex items-center justify-center">
-            <img src="logo4.png" alt="Logo 4" className="w-8 h-8" />
-            <img src="logo5.png" alt="Logo 5" className="w-8 h-8" />
-            <img src="logo6.png" alt="Logo 6" className="w-8 h-8" />
+            <img src="/images/instagram.png" alt="Logo 4" className="w-6 h-6 mr-2" />
+            <img src="/images/facebook.png" alt="Logo 5" className="w-6 h-6 mr-2" />
+            <img src="/images/linkedin.png" alt="Logo 6" className="w-6 h-6 mr-2" />
             </div>
           </div>
     
@@ -47,41 +73,45 @@ function Footer (){
     
           {/* Column 4 */}
           <div className="text-center">
-            <h3 className="text-lg font-semibold">Sign up for our Newsletter</h3>
-            <input type="email" placeholder="Email" className="border p-2 rounded-lg" />
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">Send</button>
-            <div className="relative block">
-      <button
-        className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
-        onClick={toggleDropdown}
-      >
-        <div className="flex items-center">
-          <img src="/images/flag.png" alt="Flag" className="w-6 h-6 mr-2" />
-        </div>
-        Select Country
-      </button>
-      {isDropdownOpen && (
-        <div className="absolute z-10 w-60 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
-          {countries.map((country, index) => (
-            <div
-              key={index}
-              className="px-4 py-2 hover:bg-gray-200 cursor-pointer flex items-center"
+          <h3 className="text-lg font-semibold">Sign up for our Newsletter</h3>
+          <input type="email" placeholder="Email" className="border p-2 rounded-lg" />
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">Send</button>
+          <div className="relative block">
+            <button
+              className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
+              onClick={toggleDropdown}
             >
-              <img
-                src={country.flag}
-                alt={country.name}
-                className="w-6 h-6 mr-2"
-              />
-              {country.name}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-            
+              <div className="flex items-center">
+                <img
+                  src={countries.find((country) => country.name === selectedCountry).flag}
+                  alt="Flag"
+                  className="w-6 h-6 mr-2"
+                />
+              </div>
+              {selectedCountry}
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute z-10 w-60 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
+                {countries.map((country, index) => (
+                  <div
+                    key={index}
+                    onClick={() => handleCountrySelect(country.name)}
+                    className="px-4 py-2 hover-bg-gray-200 cursor-pointer flex items-center"
+                  >
+                    <img
+                      src={country.flag}
+                      alt={country.name}
+                      className="w-6 h-6 mr-2"
+                    />
+                    {country.name}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
-        </div>
-      );
+      </div>
+    </div>
+  );
 }
 export default Footer
