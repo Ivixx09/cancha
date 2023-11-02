@@ -20,19 +20,17 @@ function Footer (){
     setIsDropdownOpen(false);
   };
 
-  useEffect(() => {
-    // Add an event listener to close the dropdown when clicking outside
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
+  const closeDropdownOnClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
 
-    window.addEventListener('click', handleClickOutside);
+  useEffect(() => {
+    document.addEventListener('click', closeDropdownOnClickOutside);
 
     return () => {
-      // Clean up the event listener
-      window.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('click', closeDropdownOnClickOutside);
     };
   }, []);
 
@@ -72,10 +70,10 @@ function Footer (){
           </div>
     
           {/* Column 4 */}
-          <div className="text-center">
+          <div className="text-center" ref={dropdownRef}>
           <h3 className="text-lg font-semibold">Sign up for our Newsletter</h3>
           <input type="email" placeholder="Email" className="border p-2 rounded-lg" />
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">Send</button>
+          <button className="bg-blue-500 text-white px-2.5 py-2 rounded-lg">Send</button>
           <div className="relative block">
             <button
               className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
@@ -91,7 +89,7 @@ function Footer (){
               {selectedCountry}
             </button>
             {isDropdownOpen && (
-              <div className="absolute z-10 w-60 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
+              <div className="absolute z-10  w-64 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
                 {countries.map((country, index) => (
                   <div
                     key={index}
