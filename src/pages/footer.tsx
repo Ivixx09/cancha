@@ -38,35 +38,60 @@ function Footer (){
         <div>
         <div className="flex justify-center space-x-32 my-4 mb-24 bg-green-950">
           {/* Column 1 */}
-          <div className="text-center">
-            <img src="" alt="Logo 1" className="w-16 h-16" />
+          <div className="text-center ">
+            <div className='flex items-center'>
+            <a href="" target='_top' className='flex items-center'>
+            <img src="/images/arch football.png" alt="Logo 1" className="w-12 h-12" />
+            <p className='text-3xl'>Sport Courts</p>
+            </a>
+            </div>
             <p>Online support</p>
-            <div className="flex items-center justify-center">
-    <img src="/images/whatsapp.png" alt="Logo 2" className="w-6 h-6 mr-2" />
-    <img src="\images\mail.png" alt="Logo 3" className="w-6 h-6 mr-2" />
+            <div className="flex items-center justify-center space-x-5">
+    <a href="" target="_blank">
+    <img src="/images/whatsapp.png" alt="Logo 2" className="w-6 h-6" />
+    </a>
+    <a href=""target="_blank" >
+    <img src="\images\mail.png" alt="Logo 3" className="w-6 h-6" />
+    </a>
   </div>
           </div>
     
           {/* Column 2 */}
-          <div className="text-center">
+          <div className="text-center " >
             <p>Discover sports courts</p>
             <p>Privacy policies</p>
             <h3 className="text-lg font-semibold">Social networks</h3>
-            <div className="flex items-center justify-center">
-            <img src="/images/instagram.png" alt="Logo 4" className="w-6 h-6 mr-2" />
-            <img src="/images/facebook.png" alt="Logo 5" className="w-6 h-6 mr-2" />
-            <img src="/images/linkedin.png" alt="Logo 6" className="w-6 h-6 mr-2" />
+            <div className="flex items-center justify-center space-x-5">
+            <a href="" target="_blank">
+            <img src="/images/instagram.png" alt="Logo 4" className="w-6 h-6 " />
+            </a>
+            <a href="" target="_blank">
+            <img src="/images/facebook.png" alt="Logo 5" className="w-6 h-6 " />
+            </a>
+            <a href="" target="_blank">
+            <img src="/images/linkedin.png" alt="Logo 6" className="w-6 h-6 " />
+            </a>
             </div>
           </div>
     
           {/* Column 3 */}
           <div className="text-center">
             <p>Direct contact</p>
-            <p>Text 1</p>
-            <p>Text 2</p>
-            <p>Text 3</p>
-            <p>Text 4</p>
-            <p>Text 5</p>
+            <a href="" target="_blank">
+              <p>Text 1</p>
+              </a>
+              <a href="" target="_blank">
+                <p>Text 2</p>
+                </a>
+                <a href="" target="_blank">
+                  <p>Text 3</p>
+                  </a>
+                  <a href="" target="_blank">
+                    <p>Text 4</p>
+                    </a>
+                    <a href="" target="_blank">
+                      <p>Text 5</p>
+                      </a>
           </div>
     
           {/* Column 4 */}
