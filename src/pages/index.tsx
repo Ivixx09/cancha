@@ -35,9 +35,32 @@ export default function Home() {
         <div>
         <Banner1></Banner1>
         </div>
+        <div className="mx-auto mt-20 bg-emerald-400 w-3/5 p-4 text-left">
+  <h2 className="text-white text-4xl font-bold">Big Title</h2>
+  <p className="text-white text-lg">Brief Description</p>
+  <img
+    src="/path-to-your-image.jpg"
+    alt="Image Placeholder"
+    className="w-full h-auto"
+  />
+  <a
+    href="https://your-link-here.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="block mt-4 text-center text-white bg-blue-500 w-2/5 px-4 py-2 rounded-lg hover:bg-blue-600"
+  >
+    I want it to reach my country
+  </a>
+</div>
 
-        <Banner2></Banner2>
-
+        
+        <div className="bg-emerald-400 py-4 text-center">
+  <h2 className="text-white text-2xl font-bold">They trust us</h2>
+</div>
+<div className=' mx-auto bg-emerald-400 w-3/5 pl-24'>
+        <Banner2 className=""></Banner2>
+       
+        </div>
         <div className="mt-10 py-6 bg-green-500 text-white">
   <div className="flex flex-wrap md:flex-nowrap justify-around items-center md:justify-between">
     <div className="p-4 md:w-2/3">

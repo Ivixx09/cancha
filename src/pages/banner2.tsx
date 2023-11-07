@@ -1,44 +1,62 @@
-import React, { useEffect, useState } from 'react'; 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
-function Banner2() {  
-    const sponsors = [     
-        { id: 1, logo: '/images/logo1.svg.webp', name: 'Sponsor 1' },     
-        { id: 2, logo: '/images/logo2.jpg', name: 'Sponsor 2' },     
-        { id: 3, logo: '/images/logo3.png', name: 'Sponsor 3' },
-    ];    
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+    slidesToSlide: 1
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1
+  }
+};
 
-    const [displayedSponsors, setDisplayedSponsors] = useState(sponsors.slice(0, 2));    
+function Mycarousel(props) {
+  return (
+    <Carousel
+      responsive={responsive}
+      autoPlay={true} // Auto-play enabled
+      autoPlaySpeed={2000} // Auto-play speed in milliseconds
+      infinite={true} // Infinite loop
+      draggable={false}
+      swipeable={false}
+      keyBoardControl={true}
+      customTransition="transform .5s ease-in-out"
+      transitionDuration={500}
+      containerClass="carousel-container"
+      removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
+      deviceType={props.deviceType}
+      dotListClass="custom-dot-list-style"
+      itemClass="carousel-item-padding-40-px"
+      
+    >
+        
+      <div>
+        <img src="/images/logo1.png" alt="" className="w-32 h-32" />
+      </div>
+      <div>
+        <img src="/images/logo2.png" alt="" className="w-32 h-32" />
+      </div>
+      <div>
+        <img src="/images/logo3.png" alt="" className="w-32 h-32" />
+      </div>
+      <div>
+        <img src="/images/logo4.png" alt="" className="w-32 h-32" />
+      </div>
+      <div>
+        <img src="/images/logo5.png" alt="" className="w-32 h-32" />
+      </div>
+      
+    </Carousel>
+  );
+}
 
-    useEffect(() => {     
-        const interval = setInterval(() => {       
-            setDisplayedSponsors((oldArray) => [
-                // the second sponsor becomes the first
-                { ...oldArray[1] },
-                // select the next sponsor in the line or the first one if we are at the array's end         
-                { ...sponsors[(sponsors.findIndex(sponsor => sponsor.id === oldArray[1].id) + 1) % sponsors.length] },       
-            ]);     
-        }, 3000);     
-
-        return () => clearInterval(interval);   
-    }, [sponsors]);    
-
-    return (     
-        <div className="bg-blue-500 text-white text-center py-5 overflow-hidden">       
-            <h2 className="text-4xl mb-4">Our Sponsors:</h2>       
-            <div className="flex justify-between items-center p-10 overflow-hidden">         
-                {displayedSponsors.map((sponsor, index) => (           
-                    <div className="flex-grow transition-all duration-500 ease-in-out" key={sponsor.id}>             
-                        <img               
-                            className="mx-auto"             
-                            src={sponsor.logo}               
-                            alt={sponsor.name}               
-                            style={{ maxWidth: '100px', height: 'auto' }}             
-                        />           
-                    </div>         
-                ))}       
-            </div>     
-        </div>   
-    ); 
-}  
-
-export default Banner2;
+export default Mycarousel;
