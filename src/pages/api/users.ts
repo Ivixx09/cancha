@@ -1,5 +1,7 @@
-const User = require('../../../db/models/user')
+import User from '../../../db/models/user'
+import Service from '../../../db/models/service'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import connection from '../../../db/models/index'
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,18 +9,38 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     try {
-      const { email } = req.query
+      connection.sync({ alter: true })
+      const { email } = req.body
       if (email) {
-        const data = await User.findOne({
+        const user = await User.findOne({
           where: {
             email: email,
+            // include: [{ model: Service }],
           },
         })
-        if (data) return res.status(200).json(data)
+        if (user) {
+          const canchas = await Service.findAll({ where: { userId: user.id } })
+          const data = { canchas, user }
+          return res.status(200).json(data)
+        }
         return res.status(400).send('Not found')
       } else {
-        const data = await User.findAll()
-        return res.status(200).json(data)
+        const user = await User.findAll()
+        if (user && Array.isArray(user)) {
+          const canchas = await Service.findAll()
+          const data = user.map((element) => {
+            const userDataValues = element.dataValues
+            userDataValues.canchas = canchas.filter(
+              (e: { dataValues: { userId: number } }) =>
+                userDataValues.id === e.dataValues.userId,
+            )
+            return userDataValues
+          })
+
+          return res.status(200).json(data)
+        } else {
+          return res.status(404).json({ error: 'No se encontraron usuarios.' })
+        }
       }
     } catch (err) {
       if (err instanceof Error) {

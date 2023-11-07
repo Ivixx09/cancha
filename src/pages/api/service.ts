@@ -1,4 +1,5 @@
-const Service = require('../../../db/models/Service')
+const User = require('../../../db/models/user')
+const Service = require('../../../db/models/service')
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -9,17 +10,25 @@ export default async function handler(
     try {
       const { id } = req.query
       if (id) {
-        const data = await Service.findOne({ where: { id: id } })
-        if (data) {
+        const service = await Service.findOne({ where: { id: id } })
+        if (service) {
+          const owner = await User.findOne({ where: { id: service.userId } })
+          const data = { cancha: service, propietario: owner }
           return res.status(200).json(data)
         } else {
           res.status(404).send('El servicio no existe')
         }
       } else {
-        const data = await Service.findAll()
-        console.log('dentroo ', data)
-        if (data) {
-          return res.status(200).json(data)
+        const service = await Service.findAll()
+        if (service) {
+          for (let i = 0; i < service.length; i++) {
+            const owner = await User.findOne({
+              where: { id: service[i].userId },
+            })
+            service[i].dataValues.propietary = owner.dataValues
+            console.log(owner.dataValues)
+          }
+          return res.status(200).json(service)
         } else {
           return res
             .status(400)
@@ -28,9 +37,9 @@ export default async function handler(
       }
     } catch (err) {
       if (err instanceof Error) {
-        console.log(err.message)
+        res.status(400).send(err.message)
       } else {
-        console.log(err)
+        res.status(400).send(err)
       }
     }
   } else if (req.method === 'POST') {
@@ -48,6 +57,7 @@ export default async function handler(
         width,
         street,
         number,
+        userId,
       } = req.body
       if (
         title &&
@@ -61,22 +71,9 @@ export default async function handler(
         length &&
         width &&
         street &&
-        number
+        number &&
+        userId
       ) {
-        console.log(
-          title,
-          description,
-          price,
-          sena,
-          duration,
-          game_type,
-          grass,
-          ball,
-          length,
-          width,
-          street,
-          number,
-        )
         const data = await Service.create({
           title,
           description,
@@ -90,11 +87,14 @@ export default async function handler(
           width,
           street,
           number,
+          userId: userId,
         })
-        console.log(data)
-        data
-          ? res.status(200).json(data)
-          : res.status(400).send('Something went wrong :(')
+        const user = await User.findByPk(userId)
+        if (data) {
+          return res.status(201).json(data)
+        } else {
+          return res.status(400).send('Something went wrong :(')
+        }
       } else {
         return res.status(400).send('missing data')
       }
@@ -102,7 +102,7 @@ export default async function handler(
       if (e instanceof Error) {
         return res.status(400).send(e.message)
       } else {
-        return res.status(400).send(e)
+        return res.status(400).send(e.message)
       }
     }
   } else if (req.method === 'PUT') {
@@ -129,7 +129,6 @@ export default async function handler(
         if (!service) {
           res.status(404).send('The service was not found')
         } else {
-          console.log(ball)
           await service.update({
             title: title,
             description: description,

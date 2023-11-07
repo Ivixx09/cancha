@@ -2,16 +2,14 @@
 import { type } from 'os'
 import { Model, DataTypes } from 'sequelize'
 const connection = require('./index')
+const User = require('./user')
 
 const serviceInit = (sequelize: any, DataTypes: any) => {
   class Service extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(_models: object) {
-      // define association here
+    static associate(models: any) {
+      Service.belongsTo(models.User, {
+        foreignKey: 'userId',
+      })
     }
   }
   Service.init(
@@ -52,6 +50,10 @@ const serviceInit = (sequelize: any, DataTypes: any) => {
       },
       number: {
         type: DataTypes.INTEGER,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     {
