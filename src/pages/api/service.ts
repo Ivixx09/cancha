@@ -102,7 +102,7 @@ export default async function handler(
       if (e instanceof Error) {
         return res.status(400).send(e.message)
       } else {
-        return res.status(400).send(e.message)
+        return res.status(400).send(e)
       }
     }
   } else if (req.method === 'PUT') {
