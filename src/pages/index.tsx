@@ -35,13 +35,16 @@ export default function Home() {
         <div>
         <Banner1></Banner1>
         </div>
-        <div className="mx-auto mt-20 bg-emerald-400 w-3/5 p-4 text-left">
-  <h2 className="text-white text-4xl font-bold">Big Title</h2>
-  <p className="text-white text-lg">Brief Description</p>
+        
+        <div className="mx-52 mt-20 bg-emerald-400 w-2/5 p-4 text-left">
+          
+  <h2 className="text-white text-4xl font-bold">Ponemos la Tecnología al servicio
+del DEPORTE en América</h2>
+  <p className="text-white text-lg  w-3/5">Estamos presentes en Argentina, Perú, Chile, EE.UU, Uruguay, Panamá , México, Colombia y Costa Rica.</p>
   <img
-    src="/path-to-your-image.jpg"
+    src="/images/countries.png"
     alt="Image Placeholder"
-    className="w-full h-auto"
+    className="w-32 h-32"
   />
   <a
     href="https://your-link-here.com"
