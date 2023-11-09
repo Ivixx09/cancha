@@ -117,7 +117,7 @@ function Bar() {
 
     return (
       <section className="flex justify-center items-center">
-      <div className="mb-8 ml-5 mr-5 bg-white rounded-xl w-full sm:w-auto">
+      <div className="px-2 mb-8 ml-5 mr-5 bg-rose-500 rounded-full w-full sm:w-auto">
         <div className="md:flex">
           <div className="md:flex-grow p-3">
             <div className="flex flex-col md:flex-row flex-wrap -mx-3">

@@ -14,17 +14,17 @@ function Banner1() {
   }, []);
 
   return (
-    <div className="relative w-full h-64 bg-black text-white flex items-center justify-center overflow-hidden">
+    <div className="bg-yellow-800 relative w-full h-64 bg-black text-white flex items-center justify-center overflow-hidden">
       <div className="w-10/12 h-32 relative text-center">
         <div
-          className={`absolute w-full h-full bg-black flex items-center justify-center transition-opacity ${
+          className={`bg-yellow-800 absolute w-full h-full bg-black flex items-center justify-center transition-opacity ${
             showText === 0 ? "opacity-100" : "opacity-0"
           }`}
         >
           <h2>Experience the Excellence of Our Software</h2>
         </div>
         <div
-          className={`absolute w-full h-full bg-black flex items-center justify-center transition-opacity ${
+          className={`bg-yellow-800 absolute w-full h-full bg-black flex items-center justify-center transition-opacity ${
             showText === 1 ? "opacity-100" : "opacity-0"
           }`}
         >
