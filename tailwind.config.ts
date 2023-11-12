@@ -22,9 +22,7 @@ module.exports = {
   darkMode: "media", // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundImage:{
-        'footia': "url('/images/footia.png')",
-      },
+      
       transitionProperty: {
         'height': 'height',
         'width': 'width',

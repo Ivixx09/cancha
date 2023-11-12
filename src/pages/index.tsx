@@ -1,15 +1,15 @@
 import { Inter } from 'next/font/google'
 import { Fragment } from 'react'
 import Head from 'next/head'
-import Header from './header'
-import Footer from './footer'
-import FAQ from './faq'
-import Bar from './bar'
-import Banner1 from './banner1'
-import Banner2 from './banner2'
-import Banner3 from './banner3'
+import Header from './Components/header'
+import Footer from './Components/footer'
+import FAQ from './Components/faq'
+import Bar from './Components/bar'
+import Banner1 from './Components/banner1'
+import Banner2 from './Components/banner2'
+import Banner3 from './Components/banner3'
 import Locations from './Components/locations'
-
+import BackgroundImage from './Components/backgroundimage'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -19,28 +19,17 @@ export default function Home() {
       <link rel="icon" href="images/arch football.png" />
     </Head>
 
-    <Header></Header>
+    
     <main className="">
-      <div className='bg-footia  bg-cover bg-bottom '>
-     <div className="p-[5%] sm:p-[10%]" >
-      
-    <h3 className="text-6xl mb-10 ">Ready to play?</h3>
-        <p className="text-xl">Discover and book sports facilities around you in real time</p>
-        </div>
-        <div className="pt-10 pb-10">
-        
-        <Bar></Bar>
-        </div>
-        </div>
+      <BackgroundImage/>
         <div>
         <Banner1></Banner1>
         </div>
         
-        <div className="mx-52  bg-emerald-400 w-2/5 p-4 text-left">
+        <div className="mx-52   w-2/5 p-4 ">
           
-  <h2 className=" text-4xl font-bold">Ponemos la Tecnología al servicio
-del DEPORTE en América</h2>
-  <p className=" text-lg  w-3/5">Estamos presentes en Argentina, Perú, Chile, EE.UU, Uruguay, Panamá , México, Colombia y Costa Rica.</p>
+  <h2 className=" text-5xl font-bold text-green-500">We put Technology at the service of SPORTS in America</h2>
+  <p className=" text-2xl  w-4/5">We are present in <span className='text-green-500'> Argentina, Peru, Chile, USA, Uruguay, Panama, Mexico, Colombia and Costa Rica.</span></p>
   <img
     src="/images/countries.png"
     alt="Image Placeholder"
@@ -61,7 +50,7 @@ del DEPORTE en América</h2>
   <h2 className=" text-2xl font-bold">They trust us</h2>
 </div>
 <div className=' mx-auto bg-emerald-400 w-3/5 pl-24'>
-        <Banner2 className=""></Banner2>
+        <Banner2 ></Banner2>
        
         </div>
         <div className=" mx-52  py-6 bg-green-500 ">

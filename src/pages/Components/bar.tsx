@@ -117,15 +117,15 @@ function Bar() {
 
     return (
       <section className="flex justify-center items-center">
-      <div className="px-2 mb-8 ml-5 mr-5 bg-rose-500 rounded-full w-full sm:w-auto">
+      <div className="px-2 mb-8 ml-5 mr-5 bg-white rounded-full w-full sm:w-auto">
         <div className="md:flex">
           <div className="md:flex-grow p-3">
             <div className="flex flex-col md:flex-row flex-wrap -mx-3">
               <div className="px-3 ">
-                <div className="mt-2 relative block w-full  border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                <div className="mt-2 relative block w-full  border-b border-gray-300  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                   <div className="flex items-center">
                     <img src="/images/location.png" alt="logo" className="w-6 h-6" />
-                    <div className="flex-grow">
+                    <div className="flex-grow ">
                       <GooglePlacesAutocomplete
                         apiKey="YOUR_API_KEY"
                         selectProps={{
@@ -136,12 +136,12 @@ function Bar() {
                   </div>
                 </div>
               </div>
-              <div className="px-3 " ref={dropdownRef}>
-                <div className="relative block appearance-none w-full bg-white border-b border-gray-300 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+              <div className="px-3  " ref={dropdownRef}>
+                <div className="relative block appearance-none w-full bg-white border-b border-gray-300  rounded leading-tight  ">
                   <div className="relative">
                     <div
                       onClick={toggleSportDropdown}
-                      className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer"
+                      className="block appearance-none w-full bg-white border-none  py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer"
                     >
                       <div className="flex items-center">
                         {selectedSport === "Select Sport" ? (
@@ -157,7 +157,7 @@ function Bar() {
                       </div>
                     </div>
                     {isSportDropdownOpen && (
-                      <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
+                      <div className="absolute z-10 w-40 bg-white border border-gray-300  mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
                         {sportOptions.map((option) => (
                           <div
                             key={option.value}
@@ -181,10 +181,10 @@ function Bar() {
                 <DateInput />
               </div>
               <div className="px-3 " ref={timeDropdownRef}>
-                <div className="relative inline-block bg-white text-gray-700 focus:outline-none focus:bg-white border-b-2 border-gray-200">
+                <div className="relative inline-block bg-white  focus:outline-none focus:bg-white border-b border-gray-200">
                   <div
                     onClick={toggleTimeDropdown}
-                    className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
+                    className="block appearance-none w-full bg-white border-none  py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
                   >
                     <div className="flex items-center">
                       <img
@@ -197,12 +197,12 @@ function Bar() {
                     {selectedHour}
                   </div>
                   {isTimeDropdownOpen && (
-                    <div className="absolute z-10 w-40 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
+                    <div className="absolute z-10 w-40 bg-white border border-gray-300  mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
                       {hours.map((hour) => (
                         <div
                           key={hour}
                           onClick={() => handleHourChange(hour)}
-                          className="px-4 py-2 hover-bg-gray-200 cursor-pointer"
+                          className="px-4 py-2  cursor-pointer"
                         >
                         {hour}
                         </div>

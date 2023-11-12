@@ -16,7 +16,7 @@ export default function DateInput() {
   }
 
   return (
-    <div className="flex items-center  text-gray-700    border-b-2 ">
+    <div className="flex items-center      border-b ">
       {/* Add a click handler to the logo */}
       <img 
         src="\images\calendarsdsad.png" 
@@ -30,7 +30,7 @@ export default function DateInput() {
           selected={startDate} 
           onChange={(date) => setStartDate(date)}
           className="py-3  "
-          placeholderText="  Select Date"
+          placeholderText="  Select Date "
         />
       </div>
     </div>
