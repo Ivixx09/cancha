@@ -14,21 +14,21 @@ function Banner3() {
   }, []);
 
   return (
-    <div className="bg-cyan-700 relative w-full h-64 bg-black text-white flex items-center justify-center overflow-hidden">
+    <div className="bg-green-600 relative w-full h-58 bg-black text-white flex items-center justify-center overflow-hidden">
       <div className="w-10/12 h-32 relative text-center">
         <div
-          className={`bg-cyan-700 absolute w-full h-full bg-black flex items-center justify-center transition-opacity ${
+          className={`bg-green-600 absolute w-full h-full bg-black flex items-center justify-center transition-opacity ${
             showText === 0 ? "opacity-100" : "opacity-0"
           }`}
         >
-          <h2>Select the best court available everywhere you are! </h2>
+          <h2 className="text-2xl ">Select the best court available everywhere you are! </h2>
         </div>
         <div
-          className={`bg-cyan-700 absolute w-full h-full bg-black flex items-center justify-center transition-opacity ${
+          className={`bg-green-600 absolute w-full h-full bg-black flex items-center justify-center transition-opacity ${
             showText === 1 ? "opacity-100" : "opacity-0"
           }`}
         >
-          <h2>Number 1 web to enjoy sports along the world!</h2>
+          <h2 className="text-2xl ">Number 1 web to enjoy sports along the world!</h2>
         </div>
       </div>
     </div>

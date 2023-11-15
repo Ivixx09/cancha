@@ -4,16 +4,35 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 function Bar() {
   const [selectedSport, setSelectedSport] = useState("Select Sport");
+ // const [selectedCity, setSelectedCity] = useState(null); // New state for selected city
+  const [selectedHour, setSelectedHour] = useState("Select Hour");
+
   const [isSportDropdownOpen, setIsSportDropdownOpen] = useState(false);
+  const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
 
   const handleSportChange = (selectedSport) => {
     setSelectedSport(selectedSport);
     setIsSportDropdownOpen(false);
   };
 
+  // Function to handle city selection
+ // const handleCitySelect = (city) => {
+  //  setSelectedCity(city);
+ // };
+
+  const handleHourChange = (hour) => {
+    setSelectedHour(hour);
+    setIsTimeDropdownOpen(false);
+  };
+
   const toggleSportDropdown = () => {
     setIsSportDropdownOpen(!isSportDropdownOpen);
   };
+
+  const toggleTimeDropdown = () => {
+    setIsTimeDropdownOpen(!isTimeDropdownOpen);
+  };
+
   const dropdownRef = useRef(null);
   const handleDocumentClick = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -62,9 +81,7 @@ function Bar() {
 
     // Add more sport options with logos
   ];
-  const [selectedHour, setSelectedHour] = useState("Select Hour");
-  const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
-
+  
   const hours = [
     "8:00 hs ",
     "8:30 hs",
@@ -105,15 +122,10 @@ function Bar() {
     "2:00 hs"
   ];
 
-  const handleHourChange = (hour) => {
-    setSelectedHour(hour);
-    setIsTimeDropdownOpen(false);
-  };
-
-  const toggleTimeDropdown = () => {
-    setIsTimeDropdownOpen(!isTimeDropdownOpen);
-  };
   
+
+  
+  const isSearchEnabled = selectedSport !== "Select Sport"  && selectedHour !== "Select Hour";
 
     return (
       <section className="flex justify-center items-center">
@@ -212,10 +224,18 @@ function Bar() {
                 </div>
               </div>
               <div className="px-3 ">
-                <div className="flex items-center">
-                  <button className="w-full  mt-0.5 bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-3 px-4 rounded-full" type="button">
-                    Search Courts
-                  </button>
+            <div className="flex items-center">
+              <button
+                className={`w-full mt-0.5 ${
+                  isSearchEnabled
+                    ? "bg-green-500 hover:bg-green-400 "
+                    : "bg-gray-500 cursor-default"
+                } focus:shadow-outline focus:outline-none text-white font-bold py-3 px-4 rounded-full`}
+                type="button"
+                disabled={!isSearchEnabled}
+              >
+                Search Courts
+              </button>
                 </div>
               </div>
             </div>

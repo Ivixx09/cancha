@@ -25,14 +25,13 @@ const BackgroundImage: React.FC = () => {
   return (
     <div className="bg-cover bg-bottom " style={backgroundImageStyle}>
       <Header/>
-      <div className="p-[5%] sm:p-[10%]">
+      <div className="p-[10%]">
         <h3 className="text-7xl font-bold mb-10">Ready to play?</h3>
         <p className="text-2xl ">Discover and book sports facilities <br /> availables around you in real time</p>
       </div>
-      <div className="pt-10 pb-10">
+      <div className=" pb-32">
         <Bar />
       </div>
-      {/* You can add content on top of the background image here */}
     </div>
   );
 };
