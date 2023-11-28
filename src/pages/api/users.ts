@@ -1,7 +1,6 @@
-import User from '../../../db/models/user'
-import Service from '../../../db/models/service'
+import { User } from '../../../db/models/models'
+import { Service } from '../../../db/models/models'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import connection from '../../../db/models/index'
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,19 +8,19 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     try {
-      connection.sync({ alter: true })
       const { email } = req.body
       if (email) {
         const user = await User.findOne({
           where: {
             email: email,
-            // include: [{ model: Service }],
           },
+          include: { model: Service },
         })
+        console.log(user)
         if (user) {
-          const canchas = await Service.findAll({ where: { userId: user.id } })
-          const data = { canchas, user }
-          return res.status(200).json(data)
+          // const canchas = await Service.findAll({ where: { userId: user.id } })
+          // const data = { canchas, user }
+          return res.status(200).json(user)
         }
         return res.status(400).send('Not found')
       } else {
