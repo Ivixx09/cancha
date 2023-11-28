@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
-
-export default function DateInput() {
-  const [startDate, setStartDate] = useState(null);
+import { subDays} from 'date-fns'
+ function DateInput() {
+  const [startDate, setStartDate] = useState(new Date());
   // Reference to the DatePicker
   const datePickerRef = useRef(null);
 
@@ -29,10 +29,14 @@ export default function DateInput() {
           ref={datePickerRef}
           selected={startDate} 
           onChange={(date) => setStartDate(date)}
-          className="py-3  "
-          placeholderText="  Select Date "
+          minDate={subDays(new Date(), 0)}
+          className="py-3 cursor-pointer  "
+          
         />
       </div>
     </div>
   );
 }
+
+
+export default DateInput

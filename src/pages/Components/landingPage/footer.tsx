@@ -36,7 +36,7 @@ function Footer (){
 
     return (
         <div>
-        <div className="flex justify-center space-x-32 my-4 mb-24 bg-fuchsia-400">
+        <div className="flex justify-center space-x-64 my-4 mb-24 bg-green-600 pt-12 pb-12">
           {/* Column 1 */}
           <div className="text-center ">
             <div className='flex items-center'>
@@ -45,7 +45,7 @@ function Footer (){
             <p className='text-3xl'>Sport Courts</p>
             </a>
             </div>
-            <p>Online support</p>
+            <p className='font-semibold'>Online support</p>
             <div className="flex items-center justify-center space-x-5">
     <a href="" target="_blank">
     <img src="/images/whatsapp.png" alt="Logo 2" className="w-6 h-6" />
@@ -57,7 +57,7 @@ function Footer (){
           </div>
     
           {/* Column 2 */}
-          <div className="text-center " >
+          <div className="text-center font-semibold" >
             <p>Discover sports courts</p>
             <p>Privacy policies</p>
             <h3 className="text-lg font-semibold">Social networks</h3>
@@ -75,7 +75,7 @@ function Footer (){
           </div>
     
           {/* Column 3 */}
-          <div className="text-center">
+          <div className="text-center font-semibold">
             <p>Direct contact</p>
             <a href="" target="_blank">
               <p>Text 1</p>
@@ -96,43 +96,46 @@ function Footer (){
     
           {/* Column 4 */}
           <div className="text-center" ref={dropdownRef}>
-          <h3 className="text-lg font-semibold">Sign up for our Newsletter</h3>
-          <input type="email" placeholder="Email" className="border p-2 rounded-lg" />
-          <button className="bg-blue-500 text-white px-2.5 py-2 rounded-lg">Send</button>
-          <div className="relative block">
-            <button
-              className="block appearance-none w-full bg-white border-none text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer flex items-center"
-              onClick={toggleDropdown}
-            >
-              <div className="flex items-center">
-                <img
-                  src={countries.find((country) => country.name === selectedCountry).flag}
-                  alt="Flag"
-                  className="w-6 h-6 mr-2"
-                />
-              </div>
-              {selectedCountry}
-            </button>
-            {isDropdownOpen && (
-              <div className="absolute z-10  w-64 bg-white border border-gray-300 text-gray-700 mt-2 py-1 rounded shadow-lg left-0 max-h-40 overflow-y-auto">
-                {countries.map((country, index) => (
-                  <div
-                    key={index}
-                    onClick={() => handleCountrySelect(country.name)}
-                    className="px-4 py-2 hover-bg-gray-200 cursor-pointer flex items-center"
-                  >
-                    <img
-                      src={country.flag}
-                      alt={country.name}
-                      className="w-6 h-6 mr-2"
-                    />
-                    {country.name}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+      <h3 className="text-lg font-semibold">Sign up for our Newsletter</h3>
+      <input type="email" placeholder="Enter your email" className="bg-green-400 border p-2 rounded-lg placeholder:text-black" /> <span className='pr-1'/>
+      <button className="bg-white text-green-500 px-2.5 py-2 rounded-lg hover:scale-105">Send</button>
+      <div className="relative block">
+  <button
+    className="block appearance-none w-full border-white text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:border-gray-500 cursor-pointer flex items-center font-semibold"
+    onClick={toggleDropdown}
+  >
+    {selectedCountry && (
+      <div className="flex items-center">
+        <img
+          src={countries.find((country) => country.name === selectedCountry).flag}
+          alt="Flag"
+          className="w-6 h-6 mr-2"
+        />
+        <span className="pr-20">{selectedCountry}</span>
+        {'▼'}
+      </div>
+    )}
+  </button>
+  {isDropdownOpen && (
+    <div className="absolute z-10 w-64 bg-green-400 border border-green-800 text-gray-700 mt-2 py-1 rounded shadow-full left-0 max-h-40 overflow-y-auto font-semibold bottom-full">
+      {countries.map((country, index) => (
+        <div
+          key={index}
+          onClick={() => handleCountrySelect(country.name)}
+          className="px-4 py-2 hover-bg-gray-200 cursor-pointer flex items-center"
+        >
+          <img
+            src={country.flag}
+            alt={country.name}
+            className="w-6 h-6 mr-2"
+          />
+          {country.name}
         </div>
+      ))}
+    </div>
+  )}
+</div>
+    </div>
       </div>
     </div>
   );

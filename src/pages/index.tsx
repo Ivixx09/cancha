@@ -1,12 +1,12 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
-import Footer from './Components/footer'
-import FAQ from './Components/faq'
-import Banner1 from './Components/banner1'
-import Banner2 from './Components/banner2'
-import Banner3 from './Components/banner3'
-import Locations from './Components/locations'
-import BackgroundImage from './Components/backgroundimage'
+import Footer from './Components/landingPage/footer'
+import FAQ from './Components/landingPage/faq'
+import Banner1 from './Components/landingPage/banner1'
+import Banner2 from './Components/landingPage/banner2'
+import Banner3 from './Components/landingPage/banner3'
+import Locations from './Components/landingPage/locations'
+import BackgroundImage from './Components/landingPage/backgroundimage'
 
 
 export default function Home() {
@@ -40,8 +40,8 @@ export default function Home() {
     href="https://your-link-here.com"
     target="_blank"
     rel="noopener noreferrer"
-    className="block mt-4 text-center  bg-blue-500 w-2/5 px-4 py-2 rounded-lg hover:bg-blue-600"
-  >
+    className="block mt-4 text-center font-medium bg-white border-2 border-green-500 text-green-500 w-2/5 px-4 py-2 rounded-lg hover:bg-green-500 hover:text-white transition-colors duration-300"
+>
     I want it to reach my country
   </a>
   <br />
@@ -57,23 +57,24 @@ export default function Home() {
        
         </div>
         </div>
-        <div className=" mx-52  py-6  ">
+        <div className=" mx-52  py-20  ">
   <div className="flex flex-wrap md:flex-nowrap justify-around items-center md:justify-between">
-    <div className="p-4 md:w-2/3">
-      <h2 className="text-4xl mb-2 w-3/5">Improve Your Court's Usability with Our Software!</h2>
-      <p className='w-3/5'>
-        Right from managing bookings to getting insights about your court usage, 
-        our software makes the task easier than ever before.
+    <div className="p-4 w-2/3">
+      <h2 className="  font-bold text-4xl mb-2 w-3/5 text-green-500">Improve Your <span className='text-orange-400'>Court's</span> Usability with Our Software!</h2>
+      <p className='w-3/5 text-2xl pt-8'>
+      We show you the benefits of having an online channel to manage your club that allows users to book online. <br  />
+
       </p>
+      <p className='pt-8 text-2xl'>Leave us your contact information so we can contact you.</p>
     </div>
-    <div className="p-4 md:w-1/3 flex justify-around md:flex-col md:items-end">
-      <button className="m-2 bg-green-500 text-blue-500 py-2 px-8 rounded">
-      See our features
-      </button>
-      <button className="m-2 bg-green-500 text-blue-500 py-2 px-4 rounded ">
-      Our plans and prices
-      </button>
-    </div>
+    <div className="p-4 flex justify-around md:flex-col mr-64">
+  <button className="font-semibold m-2 bg-green-500 text-white py-2 px-8 rounded transition duration-300 ease-in-out hover:bg-green-400 hover:text-gray-100 hover:scale-110">
+    See our features
+  </button>
+  <button className="font-semibold mt-6 m-2 border border-green-500 text-green-500 py-2 px-4 rounded transition duration-300 ease-in-out  hover:text-green-400 hover:scale-110">
+    Our plans and prices
+  </button>
+</div>
   </div>
 </div>
 

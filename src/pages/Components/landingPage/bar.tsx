@@ -1,24 +1,21 @@
+import Link from 'next/link'
 import React, { useRef,useState,useEffect } from "react";
 import DateInput from "./datepicker";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 function Bar() {
   const [selectedSport, setSelectedSport] = useState("Select Sport");
- // const [selectedCity, setSelectedCity] = useState(null); // New state for selected city
-  const [selectedHour, setSelectedHour] = useState("Select Hour");
+   const [selectedHour, setSelectedHour] = useState("Select Hour");
 
   const [isSportDropdownOpen, setIsSportDropdownOpen] = useState(false);
   const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
+  
 
   const handleSportChange = (selectedSport) => {
     setSelectedSport(selectedSport);
     setIsSportDropdownOpen(false);
   };
 
-  // Function to handle city selection
- // const handleCitySelect = (city) => {
-  //  setSelectedCity(city);
- // };
 
   const handleHourChange = (hour) => {
     setSelectedHour(hour);
@@ -128,8 +125,8 @@ function Bar() {
   const isSearchEnabled = selectedSport !== "Select Sport"  && selectedHour !== "Select Hour";
 
     return (
-      <section className="flex justify-center items-center">
-      <div className="px-2 mb-8 ml-5 mr-5 bg-white rounded-full w-full sm:w-auto">
+      <section className="flex justify-center items-center ">
+      <div className="px-2 mb-8 ml-5 mr-5 bg-white rounded-lg w-full sm:w-auto shadow-lg">
         <div className="md:flex">
           <div className="md:flex-grow p-3">
             <div className="flex flex-col md:flex-row flex-wrap -mx-3">
@@ -190,7 +187,7 @@ function Bar() {
                 </div>
               </div>
               <div className="px-3 ">
-                <DateInput />
+                <DateInput/>
               </div>
               <div className="px-3 " ref={timeDropdownRef}>
                 <div className="relative inline-block bg-white  focus:outline-none focus:bg-white border-b border-gray-200">
@@ -225,7 +222,7 @@ function Bar() {
               </div>
               <div className="px-3 ">
             <div className="flex items-center">
-              <button
+            <Link href="/Components/searchResults/searchResultsPage"><button
                 className={`w-full mt-0.5 ${
                   isSearchEnabled
                     ? "bg-green-500 hover:bg-green-400 "
@@ -235,7 +232,7 @@ function Bar() {
                 disabled={!isSearchEnabled}
               >
                 Search Courts
-              </button>
+              </button></Link>
                 </div>
               </div>
             </div>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-const AccordionItem = ({ FAQ, isOpen, onClick }) => {
+const AccordionItem = ({ FAQ, isOpen, onClick, isFirst, isLast }) => {
   return (
-    <div className="border p-3 bg-white w-full flex flex-col text-black first:rounded-t-lg last:rounded-b-lg">
-     <div onClick={onClick} className="cursor-pointer flex justify-between items-center w-full">
-        <h2>{FAQ.question}</h2>
+    <div className={`border p-3 bg-white w-full flex flex-col text-black shadow-lg ${isFirst ? 'rounded-t-lg' : ''} ${isLast ? 'rounded-b-lg' : ''}`}>
+      <div onClick={onClick} className="cursor-pointer flex justify-between items-center w-full">
+        <h2 className='text-green-500 font-medium'>{FAQ.question}</h2>
         <span className="self-end">{isOpen ? '▲' : '▼'}</span>
       </div>
-      {isOpen && <div className="mt-2">{FAQ.answer}</div>}
+      {isOpen && <div className="mt-2 ">{FAQ.answer}</div>}
     </div>
   );
 };
@@ -48,14 +48,17 @@ const FAQ = () => {
 
   return (
     <div className="max-w-5xl mx-auto">
-      {faqs.map((FAQ, i) => 
-        <AccordionItem 
-          key={i} 
-          FAQ={FAQ} 
+      <p className='text-center font-bold text-3xl text-green-500 pt-24 pb-10'>Frequently asked questions</p>
+      {faqs.map((FAQ, i) => (
+        <AccordionItem
+          key={i}
+          FAQ={FAQ}
           isOpen={i === openIndex}
-          onClick={() => setOpenIndex(i === openIndex ? null : i)} 
+          onClick={() => setOpenIndex(i === openIndex ? null : i)}
+          isFirst={i === 0}
+          isLast={i === faqs.length - 1}
         />
-      )}
+      ))}
     </div>
   );
 };
