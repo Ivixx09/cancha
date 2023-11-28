@@ -9,5 +9,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const connection = sequelize
-connection.sync({ alter: true })
 module.exports = connection

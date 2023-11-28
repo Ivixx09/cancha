@@ -10,11 +10,14 @@ export default async function handler(
     try {
       const { id } = req.query
       if (id) {
-        const service = await Service.findOne({ where: { id: id } })
+        const service = await Service.findOne({
+          where: { id: id },
+          include: { model: User },
+        })
         if (service) {
-          const owner = await User.findOne({ where: { id: service.userId } })
-          const data = { cancha: service, propietario: owner }
-          return res.status(200).json(data)
+          // const owner = await User.findOne({ where: { id: service.userId } })
+          // const data = { cancha: service, propietario: owner }
+          return res.status(200).json(service)
         } else {
           res.status(404).send('El servicio no existe')
         }

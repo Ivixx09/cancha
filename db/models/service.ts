@@ -2,16 +2,9 @@
 import { type } from 'os'
 import { Model, DataTypes } from 'sequelize'
 const connection = require('./index')
-const User = require('./user')
 
 const serviceInit = (sequelize: any, DataTypes: any) => {
-  class Service extends Model {
-    static associate(models: any) {
-      Service.belongsTo(models.User, {
-        foreignKey: 'userId',
-      })
-    }
-  }
+  class Service extends Model {}
   Service.init(
     {
       title: {
