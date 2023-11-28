@@ -1,5 +1,5 @@
-const User = require('../../../db/models/user')
-const Service = require('../../../db/models/service')
+import { User } from '../../../db/models/models'
+import { Service } from '../../../db/models/models'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -15,8 +15,6 @@ export default async function handler(
           include: { model: User },
         })
         if (service) {
-          // const owner = await User.findOne({ where: { id: service.userId } })
-          // const data = { cancha: service, propietario: owner }
           return res.status(200).json(service)
         } else {
           res.status(404).send('El servicio no existe')

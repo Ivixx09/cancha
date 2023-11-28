@@ -18,28 +18,14 @@ export default async function handler(
         })
         console.log(user)
         if (user) {
-          // const canchas = await Service.findAll({ where: { userId: user.id } })
-          // const data = { canchas, user }
           return res.status(200).json(user)
         }
         return res.status(400).send('Not found')
       } else {
-        const user = await User.findAll()
-        if (user && Array.isArray(user)) {
-          const canchas = await Service.findAll()
-          const data = user.map((element) => {
-            const userDataValues = element.dataValues
-            userDataValues.canchas = canchas.filter(
-              (e: { dataValues: { userId: number } }) =>
-                userDataValues.id === e.dataValues.userId,
-            )
-            return userDataValues
-          })
-
-          return res.status(200).json(data)
-        } else {
-          return res.status(404).json({ error: 'No se encontraron usuarios.' })
-        }
+        const user = await User.findAll({
+          include: { model: Service },
+        })
+        return res.status(200).json(user)
       }
     } catch (err) {
       if (err instanceof Error) {
