@@ -17,11 +17,47 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  
+    
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.translate-x-ticker {
+  --translate-x: 0px;
+  transform: translateX(var(--translate-x));
+}
+
+.animate-ticker {
+  animation: ticker 1s infinite linear;
+}
+
+.transitions {
+  position: relative;
+  overflow: hidden;
+}
+
+.transitions div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: transform 2s ease-out, opacity 1s ease-in-out;
+  transition-delay: 1s;
+}
+.css-1g0ktt0-Jt{
+  display: none !important;
+ }
+.css-13cymwt-control {
+  border:none !important;
 }
