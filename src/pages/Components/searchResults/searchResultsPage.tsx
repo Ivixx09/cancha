@@ -1,6 +1,6 @@
 // SearchResultsPage.tsx
 import React from 'react';
-import Bar from '../landingPage/bar';
+import Bar2 from './bar2';
 import CourtList from './courtList';
 import Map from './Map';
 import DropDownMenus from './dropdownMenus';
@@ -8,15 +8,15 @@ function SearchResultsPage() {
   
   return (
     <div>
-       <Bar  /> 
+       <Bar2  /> 
       <div className="flex">
-        <div className="w-1/4">
-          <h1>SEXOOOO</h1>
+        <div className="">
+          
          <DropDownMenus/>
           {/* Dropdown menus component */}
           {/* You can create a new component for the dropdown menus */}
         </div>
-        <div className="w-3/4">
+        <div className="">
           <CourtList />
           <Map />
         </div>
