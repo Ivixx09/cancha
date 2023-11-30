@@ -1,18 +1,9 @@
 'use strict'
 import { Model, DataTypes } from 'sequelize'
-const connection = require('../index')
-const Service = require('./service')
+const connection = require('./index')
 
 const userInit = (sequelize: any, DataTypes: { STRING: any; NUMBER: any }) => {
-  class User extends Model {
-    static associate(models: any) {
-      User.hasMany(models.Service, {
-        foreignKey: 'userId',
-        as: 'services',
-      })
-      User.belongsToMany(Service, { through: 'Diary' })
-    }
-  }
+  class User extends Model {}
   User.init(
     {
       firstName: {
@@ -38,7 +29,6 @@ const userInit = (sequelize: any, DataTypes: { STRING: any; NUMBER: any }) => {
       freezeTableName: true,
     },
   )
-  connection.sync({ alter: true })
   return User
 }
 
