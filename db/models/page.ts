@@ -1,6 +1,6 @@
-'use strict';
-import { Model, DataTypes } from 'sequelize';
-const connection = require('./index');
+'use strict'
+import { Model, DataTypes } from 'sequelize'
+const connection = require('../index')
 
 const pageInit = (sequelize: any, DataTypes: any) => {
   class Page extends Model {
@@ -13,25 +13,28 @@ const pageInit = (sequelize: any, DataTypes: any) => {
       // define association here
     }
   }
-  Page.init({
-    name:{
-      type: DataTypes.STRING,
-      allowNull: false
+  Page.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
-    description:{
-      type: DataTypes.STRING,
-      allowNull: false
+    {
+      sequelize,
+      modelName: 'Page',
+      freezeTableName: true,
     },
-    image:{
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  }, {
-    sequelize,  
-    modelName: 'Page',
-    freezeTableName: true
-  });
-  return Page;
-};
+  )
+  return Page
+}
 
 module.exports = pageInit(connection, DataTypes)

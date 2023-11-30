@@ -1,6 +1,6 @@
-'use strict';
-import { Model, DataTypes } from 'sequelize';
-const connection = require('./index');
+'use strict'
+import { Model, DataTypes } from 'sequelize'
+const connection = require('../index')
 
 const diaryInit = (sequelize: any, DataTypes: any) => {
   class Diary extends Model {
@@ -13,29 +13,32 @@ const diaryInit = (sequelize: any, DataTypes: any) => {
       // define association here
     }
   }
-  Diary.init({
-    day:{
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    hour:{
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    service_id:{
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    user_email:{
+  Diary.init(
+    {
+      day: {
         type: DataTypes.STRING,
-        allowNull: false
-      }
-  }, {
-    sequelize,  
-    modelName: 'Diary',
-    freezeTableName: true
-  });
-  return Diary;
-};
+        allowNull: false,
+      },
+      hour: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      service_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      user_email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'Diary',
+      freezeTableName: true,
+    },
+  )
+  return Diary
+}
 
 module.exports = diaryInit(connection, DataTypes)

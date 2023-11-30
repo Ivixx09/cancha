@@ -1,6 +1,10 @@
 import { User } from '../../../db/models/models'
 import { Service } from '../../../db/models/models'
 import type { NextApiRequest, NextApiResponse } from 'next'
+<<<<<<< HEAD
+import connection from '../../../db/index'
+=======
+>>>>>>> c231ebeee969c6431d271e486367981293fd71e3
 
 export default async function handler(
   req: NextApiRequest,
