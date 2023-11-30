@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize'
-import config from '../config/config.js'
+import config from './config/config.js'
 
 let sequelize
 if (process.env.NODE_ENV === 'production') {
@@ -9,5 +9,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const connection = sequelize
-connection.sync({ alter: true })
 module.exports = connection

@@ -7,6 +7,7 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     try {
+      
     } catch (err) {
       if (err instanceof Error) {
         console.log(err.message)

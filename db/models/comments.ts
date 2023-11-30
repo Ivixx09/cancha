@@ -1,6 +1,6 @@
-'use strict';
-import { Model, DataTypes } from 'sequelize';
-const connection = require('./index');
+'use strict'
+import { Model, DataTypes } from 'sequelize'
+const connection = require('../index')
 
 const commentInit = (sequelize: any, DataTypes: any) => {
   class Comment extends Model {
@@ -13,25 +13,28 @@ const commentInit = (sequelize: any, DataTypes: any) => {
       // define association here
     }
   }
-  Comment.init({
-    content:{
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    service_id:{
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    user_email:{
+  Comment.init(
+    {
+      content: {
         type: DataTypes.STRING,
-        allowNull: false
-      }
-  }, {
-    sequelize,  
-    modelName: 'Comment',
-    freezeTableName: true
-  });
-  return Comment;
-};
+        allowNull: false,
+      },
+      service_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      user_email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'Comment',
+      freezeTableName: true,
+    },
+  )
+  return Comment
+}
 
 module.exports = commentInit(connection, DataTypes)
