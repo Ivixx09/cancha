@@ -1,7 +1,7 @@
 import User from '../../../db/models/user'
 import Service from '../../../db/models/service'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import connection from '../../../db/models/index'
+import connection from '../../../db/index'
 
 export default async function handler(
   req: NextApiRequest,

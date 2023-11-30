@@ -1,6 +1,6 @@
 'use strict'
 import { Model, DataTypes } from 'sequelize'
-const connection = require('./index')
+const connection = require('../index')
 const Service = require('./service')
 
 const userInit = (sequelize: any, DataTypes: { STRING: any; NUMBER: any }) => {
@@ -10,6 +10,7 @@ const userInit = (sequelize: any, DataTypes: { STRING: any; NUMBER: any }) => {
         foreignKey: 'userId',
         as: 'services',
       })
+      User.belongsToMany(Service, { through: 'Diary' })
     }
   }
   User.init(
