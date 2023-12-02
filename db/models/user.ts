@@ -1,6 +1,6 @@
 'use strict'
 import { Model, DataTypes } from 'sequelize'
-const connection = require('./index')
+const connection = require('../../db/index')
 
 const userInit = (sequelize: any, DataTypes: { STRING: any; NUMBER: any }) => {
   class User extends Model {}

@@ -1,4 +1,4 @@
-import connection from '.'
+import connection from '../../db/index'
 import User from './user'
 import Service from './service'
 
