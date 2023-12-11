@@ -39,14 +39,14 @@ const Dropdown3 = ({ selectedFilters, setSelectedFilters }) => {
         onClick={handleToggleDropdown}
         type="button"
         className={`flex items-center justify-between w-36 px-4 py-2 text-sm font-semibold ${
-          selectedFilters.length ? 'text-green-500' : 'text-gray-800'
+          selectedFilters.length ? '' : 'text-gray-800'
         } bg-white border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300`}
       >
         {/* Add your logo here */}
         <img
-          src="/path/to/your/logo.png"
+          src="/images/clock.png"
           alt="Logo"
-          className="w-6 h-6 mr-2 rounded-full"
+          className="w-4 h-4 mr-2 "
         />
         Time
         <svg
@@ -76,11 +76,7 @@ const Dropdown3 = ({ selectedFilters, setSelectedFilters }) => {
                   }`}
                 >
                   {/* Add profile icon/logo here */}
-                  <img
-                    src={`/path/to/your/${item.toLowerCase().replace(' ', '-')}-icon.png`}
-                    alt={item}
-                    className="w-4 h-4 mr-2"
-                  />
+                  
                   {item}
                   {selectedFilters.includes(item) && (
                     <svg

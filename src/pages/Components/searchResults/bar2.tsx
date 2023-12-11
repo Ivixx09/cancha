@@ -126,11 +126,21 @@ function Bar2() {
 
     return (
       <section className=" ">
+        
       <div className="px-2 mb-8   bg-white  w-full sm:w-auto shadow-lg">
         <div className="md:flex">
+          <br />
+          <Link href='/'>
+        <img 
+            className="mr-2 h-8 w-8 mt-7"
+            src="/images/arch football.png" 
+            alt="Logo"
+          />
+          </Link>
           <div className="md:flex-grow p-3">
             <div className="flex flex-col md:flex-row flex-wrap -mx-3">
               <div className="px-3 ">
+                
                 <div className="mt-2 relative block w-full  border-b border-gray-300  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                   <div className="flex items-center">
                     <img src="/images/location.png" alt="logo" className="w-6 h-6" />
