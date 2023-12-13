@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const Dropdown1 = ({ selectedFilters, setSelectedFilters }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState(null);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -24,38 +23,75 @@ const Dropdown1 = ({ selectedFilters, setSelectedFilters }) => {
   };
 
   const handleItemClick = (item) => {
-    setSelectedFilter(item);
     setDropdownOpen(false);
+    setSelectedFilters((prevFilters) => {
+      const newFilters = [...prevFilters];
+      const existingIndex = newFilters.findIndex(
+        (filter) => filter.identifier === 'Dropdown1'
+      );
+  
+      if (existingIndex !== -1) {
+        newFilters.splice(existingIndex, 1, { identifier: 'Dropdown1', filter: item });
+      } else {
+        newFilters.push({ identifier: 'Dropdown1', filter: item });
+      }
+  
+      return newFilters;
+    });
   };
 
-  
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
       <button
         onClick={handleToggleDropdown}
         type="button"
         className={`flex items-center justify-between w-36 px-4 py-2 text-sm font-semibold ${
-          selectedFilter ? 'text-green-500' : 'text-gray-800'
+          selectedFilters.length && selectedFilters[0].filter ? '' : 'text-gray-800'
         } bg-white border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300`}
       >
-        {/* Add your logo here */}
-        <img
-          src="/path/to/your/logo.png"
-          alt="Logo"
-          className="w-6 h-6 mr-2 rounded-full"
-        />
-        {selectedFilter || 'Sort'}
-        <svg
-          className={`w-4 h-4 ml-2 ${
-            isDropdownOpen ? '-rotate-180' : 'rotate-0'
-          } transition-transform`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-        </svg>
+        {selectedFilters.length && selectedFilters[0].filter ? (
+          // Display the selected option
+          <>
+            <img
+              src={`/images/${selectedFilters[0].filter
+                .toLowerCase()
+                .replace(' ', '-')}.png`}
+              alt={selectedFilters[0].filter}
+              className="w-4 h-4 mr-2"
+            />
+            {selectedFilters[0].filter}
+            <svg
+              className="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 12l2 2 6-6" />
+            </svg>
+          </>
+        ) : (
+          // Display default text if no option is selected
+          <>
+            <img
+              src="\images\up-down.png"
+              alt="Logo"
+              className="w-4 h-4 mr-2 "
+            />
+            Sort
+            <svg
+              className={`w-4 h-4 ml-2 ${
+                isDropdownOpen ? '-rotate-180' : 'rotate-0'
+              } transition-transform`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </>
+        )}
       </button>
 
       {isDropdownOpen && (
@@ -68,19 +104,19 @@ const Dropdown1 = ({ selectedFilters, setSelectedFilters }) => {
                   key={item}
                   onClick={() => handleItemClick(item)}
                   className={`block flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer ${
-                    selectedFilter === item ? 'bg-green-100' : ''
+                    selectedFilters.find((filter) => filter.filter === item) ? 'bg-green-100' : ''
                   }`}
                 >
                   {/* Add profile icon/logo here */}
                   <img
-                    src={`/path/to/your/${item.toLowerCase().replace(' ', '-')}-icon.png`}
+                    src={`/images/${item}.png`}
                     alt={item}
                     className="w-4 h-4 mr-2"
                   />
                   {item}
-                  {selectedFilter === item && (
+                  {selectedFilters.find((filter) => filter.filter === item) && (
                     <svg
-                      className="w-4 h-4 ml-2 text-green-500"
+                      className="w-4 h-4 ml-2 "
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -96,7 +132,6 @@ const Dropdown1 = ({ selectedFilters, setSelectedFilters }) => {
         </div>
       )}
     </div>
-    
   );
 };
 

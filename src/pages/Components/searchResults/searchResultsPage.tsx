@@ -8,8 +8,8 @@ function SearchResultsPage() {
   
   return (
     <div>
-       <Bar2  /> 
-      <div className="flex">
+        <Bar2  /> 
+      <div className="">
         <div className="">
           
          <DropDownMenus/>
