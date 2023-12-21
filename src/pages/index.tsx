@@ -19,7 +19,7 @@ export default function Home() {
     
       
     
-    <main className="">
+    <main >
       <BackgroundImage/>
         
         <Banner1></Banner1>
