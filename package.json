@@ -18,6 +18,7 @@
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "next": "^13.5.4",
+    "odometer": "^0.4.8",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "postcss": "8.4.29",

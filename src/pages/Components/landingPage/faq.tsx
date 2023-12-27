@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 const AccordionItem = ({ FAQ, isOpen, onClick, isFirst, isLast }) => {
   return (
-    <div className={`border p-3 bg-white w-full flex flex-col text-black shadow-lg ${isFirst ? 'rounded-t-lg' : ''} ${isLast ? 'rounded-b-lg' : ''}`}>
+    <div className={`border p-3 bg-white w-full flex flex-col text-black shadow-lg ${isFirst ? 'rounded-t-lg' : ''} ${isLast ? 'rounded-b-lg' : ''} overflow-hidden transition-max-h duration-300 ease-in-out ${isOpen ? 'max-h-screen' : 'max-h-11'}`}>
       <div onClick={onClick} className="cursor-pointer flex justify-between items-center w-full">
         <h2 className='text-green-500 font-medium'>{FAQ.question}</h2>
         <span className="self-end">{isOpen ? '▲' : '▼'}</span>
       </div>
-      {isOpen && <div className="mt-2 ">{FAQ.answer}</div>}
+      <div className="mt-2">{FAQ.answer}</div>
     </div>
   );
 };

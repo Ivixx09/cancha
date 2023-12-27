@@ -1,0 +1,30 @@
+import React from 'react';
+
+const Section = () => {
+  return (
+    <div className="flex items-center mt-32  bg-gradient-to-t from-green-800 to-green-400 ">
+      {/* Left Column - Stock Image */}
+      <div className="flex-grow p-8 text-white">
+        <h2 className="text-3xl  mb-4">PRICES AND PLANS</h2>
+        <p className="text-4xl pb-4 font-black">Software de Gestión Deportiva</p>
+       
+        <p className="text-xl pb-4">
+        Todo lo que tu complejo necesita, al mejor precio de LATAM
+
+</p>
+<p>Automatizá tu complejo desde $8.710 por mes</p>
+       
+      </div>
+      
+      <div className="flex-shrink-0 w-1/2">
+      <img src="/images/celu.png" alt="Stock Image" className="mx-auto max-h-[50vh]" />
+
+      </div>
+
+      {/* Right Column - Text Content */}
+      
+    </div>
+  );
+};
+
+export default Section;

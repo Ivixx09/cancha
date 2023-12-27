@@ -36,7 +36,7 @@ function Footer (){
 
     return (
         <div>
-        <div className="flex justify-center space-x-64 my-4 mb-24 bg-green-600 pt-12 pb-12">
+        <div className="flex justify-center space-x-64 my-4 mb-24 bg-gradient-to-t from-green-800 to-green-500 pt-12 pb-12 text-white">
           {/* Column 1 */}
           <div className="text-center ">
             <div className='flex items-center'>
