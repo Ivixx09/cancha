@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header2 from './header2';
-const images = ['footia.png', 'tenisia.png', 'basquetballia.png'];
+const images = ['tenis1.png', 'tenis2.png', 'tenis3.png'];
 const imageInterval = 5000; // 5 seconds
 
 const BackgroundImage2: React.FC = () => {
@@ -17,12 +17,12 @@ const BackgroundImage2: React.FC = () => {
   }, []);
 
   const backgroundImageStyle = {
-    backgroundImage: `linear-gradient(to right, white 15%, transparent 50%), url('/images/${images[currentImage]}')`,
-    backgroundSize: 'cover', // Maintain the cover aspect ratio
+    backgroundImage: `linear-gradient(to right, white 1%, transparent 90%), url('/images/${images[currentImage]}')`,
+    backgroundSize: ' cover', // Maintain the cover aspect ratio
   };
 
   return (
-    <div className="bg-cover bg-bottom pb-28 " style={backgroundImageStyle}>
+    <div className=" bg-bottom pb-28 " style={backgroundImageStyle}>
       <Header2/>
       <div className="py-[6%] pl-10 ">
         <h3 className="text-5xl font-extrabold ">Management<br/> system of clubs</h3>

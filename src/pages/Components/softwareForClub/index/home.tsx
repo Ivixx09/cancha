@@ -8,7 +8,7 @@ import Section4 from "./section4";
 import Section5 from "./section5";
 import Section6 from "./section6";
 import Faq from './faq'
-import Footer from "../landingPage/footer";
+import Footer from "../../landingPage/footer";
 function Home(){
   const maxValues = [1500, 45, 20000, 220000]; // Example maximum values for each Odometer
 

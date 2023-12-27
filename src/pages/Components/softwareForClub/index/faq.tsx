@@ -56,8 +56,8 @@ const Faq= () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <p className='text-center font-bold text-3xl text-green-500 pt-24 pb-10'>Frequently asked questions</p>
+    <div className="max-w-5xl mx-auto pb-20">
+      <p className='text-center text-4xl  font-black  pt-24 pb-10'>Frequently asked questions</p>
       {faqs.map((FAQ, i) => (
         <AccordionItem
           key={i}
